@@ -1,0 +1,20 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/home/ian/web2py/applications/topoi/controllers/plugin_listandedit.py'
+p4
+sS'code'
+p5
+S"# coding: utf8\n# try something like\ndef list(): \n    #settings    \n    displayfield = 0\n    \n    tablename = request.args[0]\n    #FIXME: Hack here to solve problem of field name not being identical to table name\n    tablename = tablename + 's'    \n        \n    if not tablename not in db.table():\n        error()\n    else:\n        rowlist = db(db[tablename].id > 0).select()\n    \n    listset = []\n    for r in rowlist:\n        i = A(r[displayfield], _href=URL('plugin_listandedit', 'edit.load', args=[tablename]), _class='plugin_listandedit_list', cid='editpane')    \n        listset.append(i)\n                \n    return dict(listset = listset)\n\nresponse._vars=response._caller(list)\n"
+p6
+sS'snapshot'
+p7
+(dp8
+sS'traceback'
+p9
+S'Traceback (most recent call last):\n  File "/home/ian/web2py/gluon/restricted.py", line 194, in restricted\n    exec ccode in environment\n  File "/home/ian/web2py/applications/topoi/controllers/plugin_listandedit.py", line 23, in <module>\n  File "/home/ian/web2py/gluon/globals.py", line 149, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/ian/web2py/applications/topoi/controllers/plugin_listandedit.py", line 11, in list\n    if not tablename not in db.table():\n  File "/home/ian/web2py/gluon/dal.py", line 4511, in __getattr__\n    return self[key]\n  File "/home/ian/web2py/gluon/dal.py", line 4505, in __getitem__\n    return dict.__getitem__(self, str(key))\nKeyError: \'table\'\n'
+p10
+s.

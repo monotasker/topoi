@@ -1,0 +1,120 @@
+timestamp: 2011-11-19T11:11:39.449000
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512)
+);
+success!
+timestamp: 2011-11-19T11:11:39.557000
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2011-11-19T11:11:39.690000
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-11-19T11:11:39.812000
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2011-11-19T11:11:39.933000
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2011-11-19T11:11:40.131000
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    url CHAR(512),
+    uuid CHAR(512)
+);
+success!
+timestamp: 2011-11-19T11:11:40.297000
+CREATE TABLE authors(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    location CHAR(512),
+    lived CHAR(512)
+);
+success!
+timestamp: 2011-11-19T11:11:40.446000
+CREATE TABLE works(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(512),
+    author INTEGER REFERENCES authors(id) ON DELETE CASCADE,
+    date_earliest CHAR(512),
+    date_latest CHAR(512),
+    date_likely CHAR(512),
+    genre CHAR(512)
+);
+success!
+timestamp: 2011-11-19T11:15:28.658000
+CREATE TABLE projects(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    projectname CHAR(512),
+    owner CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2011-11-19T11:16:07.291000
+CREATE TABLE notes(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    label CHAR(512),
+    user CHAR(512),
+    body TEXT,
+    last_edited TIMESTAMP,
+    project INTEGER REFERENCES projects(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-11-19T11:16:07.741000
+CREATE TABLE tags(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tagname CHAR(512)
+);
+success!
+timestamp: 2011-11-19T11:17:29.288000
+ALTER TABLE tags ADD creator INTEGER REFERENCES auth_user(id) ON DELETE CASCADE;
+timestamp: 2011-11-21T09:45:50.276350
+CREATE TABLE locations(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    location CHAR(512)
+);
+success!
+timestamp: 2011-11-21T09:46:43.230367
+ALTER TABLE works ADD comments CHAR(512);
+timestamp: 2011-11-21T09:46:43.344413
+ALTER TABLE works ADD source CHAR(512);
+timestamp: 2011-11-21T09:46:43.437427
+ALTER TABLE tags ADD project INTEGER REFERENCES projects(id) ON DELETE CASCADE;
+timestamp: 2011-11-21T09:49:32.782930
+ALTER TABLE notes ADD reference CHAR(512);
+timestamp: 2011-11-21T09:49:32.874775
+ALTER TABLE notes ADD excerpt CHAR(512);
+timestamp: 2011-11-21T11:15:27.469463
+ALTER TABLE notes ADD author INTEGER REFERENCES authors(id) ON DELETE CASCADE;
+timestamp: 2011-11-21T11:15:27.583249
+ALTER TABLE notes ADD work INTEGER REFERENCES works(id) ON DELETE CASCADE;
+timestamp: 2011-11-21T11:15:27.655629
+ALTER TABLE notes ADD tags INTEGER REFERENCES tags(id) ON DELETE CASCADE;

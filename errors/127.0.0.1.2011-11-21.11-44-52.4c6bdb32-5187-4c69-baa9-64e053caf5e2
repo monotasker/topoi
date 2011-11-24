@@ -1,0 +1,20 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/home/ian/web2py/applications/topoi/controllers/adding.py'
+p4
+sS'code'
+p5
+S'# coding: utf8\ndef author():\n    form = SQLFORM(db.category)\n\n    if form.accepts(request.vars):\n        response.flash = T("new author added")\n        target= request.args[0]\n        #close the widget\'s dialog box\n        response.js = \'$( "#%s_dialog-form" ).dialog( "close" ); \' %(target)\n        #update the options they can select their new category in the main form                \n        response.js += """$("#%s").append("<option value=\'%s\'>%s</option>");""" % (target, form.vars.id, form.vars.name)\n        #and select the one they just added\n        response.js += """$("#%s").val("%s");""" % (target, form.vars.id)\n        #finally, return a blank form incase for some reason they wanted to add another option\n        return form\n    elif form.errors:\n        #silly user, just send back the form and it\'ll still be in our dialog box complete with error messages\n        return form\n    else:\n        #hasn\'t been submitted yet, just give them the fresh blank form        \n        return form\n    return dict(form = form)\n    \ndef tag():\n    form = crud.create(db.tags)\n    return dict(form = form)\n    \ndef work():\n    form = crud.create(db.works)\n    return dict(form = form)\n    \ndef location():\n    form = crud.create(db.locations)\n    return dict(form = form)\n\nresponse._vars=response._caller(author)\n'
+p6
+sS'snapshot'
+p7
+(dp8
+sS'traceback'
+p9
+S'Traceback (most recent call last):\n  File "/home/ian/web2py/gluon/restricted.py", line 194, in restricted\n    exec ccode in environment\n  File "/home/ian/web2py/applications/topoi/controllers/adding.py", line 36, in <module>\n  File "/home/ian/web2py/gluon/globals.py", line 149, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/ian/web2py/applications/topoi/controllers/adding.py", line 3, in author\n    form = SQLFORM(db.category)\n  File "/home/ian/web2py/gluon/dal.py", line 4511, in __getattr__\n    return self[key]\n  File "/home/ian/web2py/gluon/dal.py", line 4505, in __getitem__\n    return dict.__getitem__(self, str(key))\nKeyError: \'category\'\n'
+p10
+s.

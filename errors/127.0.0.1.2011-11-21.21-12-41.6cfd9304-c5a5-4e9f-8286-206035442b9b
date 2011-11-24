@@ -1,0 +1,20 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/home/ian/web2py/applications/topoi/controllers/plugin_listandedit.py'
+p4
+sS'code'
+p5
+S"# coding: utf8\n# try something like\ndef list(): \n    #settings    \n    displayfield = 0\n    \n    tablename = request.args[0]\n    #FIXME: Hack here to solve problem of field name not being identical to table name\n    tablename = tablename + 's'    \n    print tablename\n        \n    rowlist = ''    \n    if not tablename in db.tables():\n        response.flash = 'error'\n    else:\n        tb = db[tablename]\n        rowlist = db(tb).select()\n    \n    listset = []\n    for r in rowlist:\n        i = A(r[displayfield], _href=URL('plugin_listandedit', 'edit.load', args=[tablename]), _class='plugin_listandedit_list', cid='editpane')    \n        listset.append(i)\n                \n    return dict(listset = listset)\n\nresponse._vars=response._caller(list)\n"
+p6
+sS'snapshot'
+p7
+(dp8
+sS'traceback'
+p9
+S'Traceback (most recent call last):\n  File "/home/ian/web2py/gluon/restricted.py", line 194, in restricted\n    exec ccode in environment\n  File "/home/ian/web2py/applications/topoi/controllers/plugin_listandedit.py", line 26, in <module>\n  File "/home/ian/web2py/gluon/globals.py", line 149, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/ian/web2py/applications/topoi/controllers/plugin_listandedit.py", line 17, in list\n    rowlist = db(tb).select()\n  File "/home/ian/web2py/gluon/dal.py", line 5697, in select\n    return self.db._adapter.select(self.query,fields,attributes)\n  File "/home/ian/web2py/gluon/dal.py", line 1238, in select\n    return self.parse(rows,self._colnames)\n  File "/home/ian/web2py/gluon/dal.py", line 1436, in parse\n    colset[fieldname] = rid = Reference(value)\nValueError: invalid literal for int() with base 10: \'Alexandria\'\n'
+p10
+s.

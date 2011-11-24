@@ -1,0 +1,20 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/home/ian/web2py/applications/topoi/models/topoi.py'
+p4
+sS'code'
+p5
+S'# coding: utf8\n\nfrom plugin_multiselect_widget import hmultiselect_widget, vmultiselect_widget\nimport datetime\n\ndb.define_table(\'locations\',\n    Field(\'location\', \'string\'),\n    format=\'%(location)s\')\n\ndb.define_table(\'authors\', \n    Field(\'name\', \'string\', default=\'anonymous\'),\n    Field(\'location\', db.locations),\n    Field(\'lived\', \'string\'), \n    format=\'%(name)s\') \n        \ndb.define_table(\'works\',\n    Field(\'title\', \'string\'),\n    Field(\'author\', db.authors),\n    Field(\'date_earliest\'),\n    Field(\'date_latest\'),\n    Field(\'date_likely\'),\n    Field(\'genre\'),\n    Field(\'source\'),\n    Field(\'comments\'),\n    format=\'%(title)s\')\n\ndb.define_table(\'projects\',\n    Field(\'projectname\', \'string\'),\n    Field(\'owner\', db.auth_user, default=auth.user_id),\n    Field(\'description\', \'text\'),\n    format=\'%(projectname)s\')\n\ndb.define_table(\'tags\',\n    Field(\'tagname\', \'string\'),\n    Field(\'creator\', db.auth_user, default=auth.user_id),\n    Field(\'project\', db.projects),\n    format=\'%(tagname)s\')\n    \ndb.define_table(\'notes\',\n    Field(\'label\', \'string\'),\n    Field(\'user\', db.auth_user, default=auth.user_id),\n    Field(\'author\', db.authors),\n    Field(\'work\', db.works),\n    Field(\'reference\'),\n    Field(\'excerpt\'),\n    Field(\'body\', \'text\'),\n    Field(\'tags\', \'list:reference db.tags\'),\n    Field(\'last_edited\', \'datetime\', default=datetime.datetime.utcnow()),\n    Field(\'project\', db.projects),\n    format=\'%(label)s\')\n#Initialize the add-or-select widget\nadd_option = SELECT_OR_ADD_OPTION(form_title="Add new", controller="default", function="add", button_text = "Add New", dialog_width=500)\ndb.notes.author.widget = add_option.widget\ndb.notes.work.widget = add_option.widget\ndb.questions.tags.requires = IS_IN_DB(db, \'tags.id\', db.tags._format, multiple = True)\ndb.notes.tags.widget = hmultiselect_widget\ndb.notes.project.widget = add_option.widget\n'
+p6
+sS'snapshot'
+p7
+(dp8
+sS'traceback'
+p9
+S'Traceback (most recent call last):\n  File "/home/ian/web2py/gluon/restricted.py", line 194, in restricted\n    exec ccode in environment\n  File "/home/ian/web2py/applications/topoi/models/topoi.py", line 55, in <module>\n    db.questions.tags.requires = IS_IN_DB(db, \'tags.id\', db.tags._format, multiple = True)\n  File "/home/ian/web2py/gluon/dal.py", line 4511, in __getattr__\n    return self[key]\n  File "/home/ian/web2py/gluon/dal.py", line 4505, in __getitem__\n    return dict.__getitem__(self, str(key))\nKeyError: \'questions\'\n'
+p10
+s.
