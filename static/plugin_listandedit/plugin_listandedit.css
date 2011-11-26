@@ -2,7 +2,7 @@
 
 #viewpane {
     float:right;
-    width:65%;
+    width:60%;
     overflow:auto;
 }
 
@@ -18,10 +18,11 @@
 #listpane {
     background:#f5f5f5;
     border:1px solid #eee;
+    padding:0;
 }
 
 #listpane ul {
-    margin-left:0;
+    padding-left:0;
 }
 
 #listpane li {
