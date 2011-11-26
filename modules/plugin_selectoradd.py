@@ -1,10 +1,8 @@
 # coding: utf8
 from gluon.custom_import import track_changes
-
 from gluon.sqlhtml import *
-from gluon.rewrite import load
+from gluon.compileapp import LoadFactory
 from gluon import current
-LOAD = load()
 
 #FIXME: set track changes to false when dev is finished
 track_changes(True)
@@ -26,8 +24,13 @@ class SELECT_OR_ADD_OPTION(object):
         self.controller = controller
         self.function = function
 
-
     def widget(self, field, value):
+        # initialize LOAD helper
+        environment = {}
+        environment['request'] = current.request
+        environment['response'] = current.response
+        LOAD = LoadFactory(environment)
+
         #generate the standard widget for this field
         select_widget = OptionsWidget.widget(field, value)
 
@@ -35,7 +38,6 @@ class SELECT_OR_ADD_OPTION(object):
         my_select_id = select_widget.attributes.get('_id', None)
         add_args = [my_select_id]
 
-        print self.form_title
         #create a div that will load the specified controller via ajax
         form_loader_div = DIV(LOAD(c = self.controller, f = self.function, args = add_args, ajax = True), _id = my_select_id + "_dialog-form", _title = self.form_title)
         #generate the "add" button that will appear next the options widget and open our dialog
