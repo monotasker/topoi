@@ -2,10 +2,6 @@
 # This plugins is licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
 # Authors: Kenji Hosoda <hosoda@s-cubism.jp>
 from gluon import *
-from gluon.custom_import import track_changes
-
-#FIXME: set track changes to false when dev is finished
-track_changes(True)
 
 def multiselect_widget(field, value, **attributes):
     requires = field.requires

@@ -1,9 +1,11 @@
 # coding: utf8
-from plugin_selectoradd import SELECT_OR_ADD_OPTION
+from plugin_selectoradd import SELECT_OR_ADD_OPTION, MULTISELECT_OR_ADD_OPTION
 from plugin_multiselect_widget import hmultiselect_widget, vmultiselect_widget
 import datetime
 
 add_option = SELECT_OR_ADD_OPTION(form_title="Add new", controller="plugin_selectoradd", function="add", button_text = "Add New", dialog_width=500)
+
+multi_add_option = MULTISELECT_OR_ADD_OPTION(form_title="Add new", controller="plugin_selectoradd", function="add", button_text = "Add New", dialog_width=500)
 
 db.define_table('locations',
     Field('location', 'string'),
@@ -14,7 +16,7 @@ db.define_table('authors',
     Field('location', db.locations),
     Field('lived', 'string'), 
     format='%(name)s')
-db.authors.location.widget = add_option.widget 
+db.authors.location.widget = lambda field, value: add_option.widget(field, value, 'locations') 
         
 db.define_table('works',
     Field('title', 'string'),
@@ -52,8 +54,8 @@ db.define_table('notes',
     Field('project', db.projects),
     format='%(label)s')
 #Initialize the add-or-select widget
-db.notes.author.widget = add_option.widget
-db.notes.work.widget = add_option.widget
+db.notes.author.widget = lambda field, value: add_option.widget(field, value, 'authors')
+db.notes.work.widget = lambda field, value: add_option.widget(field, value, 'works')
 db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, multiple = True)
-db.notes.tags.widget = hmultiselect_widget
-db.notes.project.widget = add_option.widget
+db.notes.tags.widget = lambda field, value: multi_add_option.widget(field, value, 'tags')
+db.notes.project.widget = lambda field, value: add_option.widget(field, value, 'projects')

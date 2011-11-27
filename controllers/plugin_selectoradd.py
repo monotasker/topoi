@@ -1,15 +1,13 @@
 @auth.requires_login()
 def add():
-    tablename = request.args[0]
-    #FIXME: Hack here to solve problem of field name not being identical to table name
-    tablename = tablename.split('_')[1] + 's'
+    tablename = request.args[1]
     if not tablename in db.tables():
-        error()
+        response.flash = T('no table with that name in database')
     else:
         form = SQLFORM(db[tablename])
     #FIXME: Requires that first field of table (after id) be used as formatting label.
     fieldname = db[tablename].fields[1]
-    print fieldname
+
     if form.accepts(request.vars):
         response.flash = T("new %s added") %(tablename)
         target= request.args[0]

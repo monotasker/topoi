@@ -217,12 +217,11 @@ div.error {
 
 .button {
     display:inline-block;
-    line-height:@lineheight2;
-    height:@lineheight2;
+    line-height:@lineheight3;
+    height:@lineheight3;
     margin-left:@typeheight;
     padding:0 @typeheight;
     .box-shadow(0, 2px, 4px);
-    color:#fff;
 }
 
 .button-green-grad {
