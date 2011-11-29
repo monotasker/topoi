@@ -1,1 +1,31 @@
+@import "framework";
 
+/* iDone theme */
+body {
+    background-color:@grey4;
+    .linear-gradient(@grey3,@grey4);
+    background-repeat: no-repeat;
+}
+
+nav {
+    background-color:@grey2;
+    padding: 0 @typeheight;
+}
+
+#page {
+    .box-shadow;
+}
+
+#viewpane, #listpane {
+    position:relative;
+}
+
+#viewpane:before {
+    content:' ';
+    .tapered-shadow;
+}
+
+#listpane:before {
+    content:' ';
+    .tapered-shadow;
+}

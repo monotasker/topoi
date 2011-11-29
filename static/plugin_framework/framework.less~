@@ -39,6 +39,10 @@ body{
 
 /* fonts */
 body {
+    .textdefaults;
+}
+
+.textdefaults() {
     font-size: @typeheight;
     line-height: @lineheight;
     font-family: @fonts1;
@@ -98,12 +102,29 @@ form div{
 /* forms */
 
 input[type=text], textarea {
-    .box-shadow-inset;
+    /*.box-shadow-inset(0, 2px, 6px, rgba(0,0,0,0.2));*/
+    border:1px solid #eee;
+    .textdefaults;
+}
+
+input[type=text]:focus, textarea:focus {
+    .box-shadow-inset(0, 2px, 6px, rgba(0,0,270,0.5));
+}
+
+textarea {
+    padding:0 @typeheight;
+    line-height:28px;
 }
 
 input[type=text], select {
     height:28px;
     line-height:28px;
+    padding-left:@typeheight;
+}
+
+select {
+    background:#fff;
+    border:1px solid #eee;
 }
 
 input[multiple=multiple] {
@@ -114,7 +135,6 @@ form label {
     display:inline-block;
     line-height:@lineheight2;
     height:@lineheight2;
-    padding-right:14px;
 }
 
 form a, button {
@@ -129,6 +149,11 @@ td {
 
 form tr td:first-child {
     text-align:right;
+    padding-right:@typeheight;
+}
+
+form td {
+    min-height:@lineheight2;
 }
 
 /* layout */
@@ -191,20 +216,32 @@ div.error {
     -ms-border-radius: @a @b @c @d;
 }
 
-.box-shadow (@x: 0, @y: 2, @blur: 6px, @color: rgba(0,0,0,0.3)) {
-  box-shadow: @arguments;
+.box-shadow(@x: 0, @y: 2, @blur: 6px, @color: rgba(0,0,0,0.3)) {
   -moz-box-shadow: @arguments;
   -webkit-box-shadow: @arguments;
   -o-box-shadow: @arguments;
   -ms-box-shadow: @arguments;
+  box-shadow: @arguments;
 }
 
-.box-shadow-inset (@x: 0, @y: 2, @blur: 6px, @color: rgba(0,0,0,0.3), @inset:inset) {
-  box-shadow: @arguments;
-  -moz-box-shadow: @arguments;
-  -webkit-box-shadow: @arguments;
-  -o-box-shadow: @arguments;
-  -ms-box-shadow: @arguments;
+.box-shadow-inset(@x:0, @y:1px, @blur:4px, @color:rgba(0,0,0,0.2)) {
+  -moz-box-shadow:@arguments inset;
+  -webkit-box-shadow: @arguments inset;
+  -o-box-shadow: @arguments inset;
+  -ms-box-shadow: @arguments inset;
+  box-shadow: @arguments inset;  
+}
+
+.tapered-shadow(){
+    position:absolute;
+    display:block;
+    width:100%;
+    height:14px;
+    top:0px;
+    overflow:hidden;
+    .radial-gradient;
+    background-position:0 -10px;
+    background-repeat:no-repeat;
 }
 
 .linear-gradient(@col1:#fff, @col2:#fff){
@@ -215,13 +252,22 @@ div.error {
     background-image:-ms-linear-gradient(@col1, @col2);
 }
 
+.radial-gradient(@h:50%, @v:53%, @hue1:rgba(0,0,0,0.3), @hue2:rgba(0,0,0,0)) {
+    background-image: -moz-radial-gradient(@h @v, ellipse closest-side, @hue1, @hue2 100%); 
+    background-image: -webkit-radial-gradient(@h @v, ellipse closest-side, @hue1, @hue2 100%); 
+    background-image: -o-radial-gradient(@h @v, ellipse closest-side, @hue1, @hue2 100%); 
+    background-image: -ms-radial-gradient(@h @v, ellipse closest-side, @hue1, @hue2 100%); 
+    background-image: radial-gradient(@h @v, ellipse closest-side, @hue1, @hue2 100%); 
+}
+
 .button {
     display:inline-block;
-    line-height:@lineheight3;
-    height:@lineheight3;
+    line-height:@lineheight2;
+    height:@lineheight2;
     margin-left:@typeheight;
     padding:0 @typeheight;
     .box-shadow(0, 2px, 4px);
+    color:#fff;
 }
 
 .button-green-grad {
@@ -253,4 +299,18 @@ div.error {
 /* your theme */
 #page {
     .box-shadow;
+}
+
+#viewpane, #listpane {
+    position:relative;
+}
+
+#viewpane:before {
+    content:' ';
+    .tapered-shadow; 
+}
+
+#listpane:before {
+    content:' ';
+    .tapered-shadow;
 }

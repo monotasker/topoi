@@ -11,8 +11,8 @@ var winheight = $(window).height();
 /* I'm using the html5 footer element here, to use standard id just change 'footer' to '#footer' */
 var headheight = $('header').outerHeight(true);
 var footheight = $('footer').outerHeight(true);
-var listheight = winheight - footheight - headheight - heightadjust;
-var viewheight = winheight - footheight - headheight - heightadjust;
+var listheight = winheight - listtop - footheight - headheight - heightadjust;
+var viewheight = winheight - viewtop - footheight - headheight - heightadjust;
 $('#listpane').css('height', listheight);
 $('#viewpane').css('height', viewheight);
 
