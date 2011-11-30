@@ -1,6 +1,16 @@
+/* iDone theme */
+/* a sub-theme for the "framework" layout plugin for web2py */
+/* copyright Ian W. Scott, 2011 */
+/* licensed under GPL 3.0 as a free, open-source resource */
+
 @import "framework";
 
-/* iDone theme */
+@font-face{
+    font-family: 'MyWebFont';
+    src: url('fonts/websymbols-regular-webfont.eot');
+    src: url('fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/topoi/static/plugin_framework/fonts/websymbols-regular-webfont.woff') format('woff'), url('fonts/websymbols-regular-webfont.ttf') format('truetype'), url('fonts/websymbols-regular-webfont.svg#websymbols-regular-webfont') format('svg');
+}
+
 body {
     background-color:@grey4;
     .linear-gradient(@grey3,@grey4);
@@ -10,6 +20,7 @@ body {
 nav {
     background-color:@grey2;
     padding: 0 @typeheight;
+    font-family: 'MyWebFont';
 }
 
 #page {
