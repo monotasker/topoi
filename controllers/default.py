@@ -17,9 +17,9 @@ def index():
     projects = db(db.projects).select()
     projectlist = []
     for p in projects:
-        i = TR(TD(A(p.projectname, _href=URL('plugin_listandedit', 'list', args=['note', p.id]))))
+        i = TR(TD(A(p.projectname, _href=URL('plugin_listandedit', 'list', args=['notes', p.id], vars={'fields':['reference']}))))
         projectlist.append(i)
-    
+
     return dict(message=T('Please choose a project'), projectlist = projectlist)
 
 def user():
@@ -77,6 +77,6 @@ def data():
 @auth.requires_login()
 def notes():
     form = SQLFORM.grid(db.notes)
-    
+
     return dict(form=form)
 

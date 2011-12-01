@@ -1,0 +1,20 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/home/ian/web2py/applications/topoi/controllers/plugin_listandedit.py'
+p4
+sS'code'
+p5
+S'# coding: utf8\n# try something like\ndef list():\n    """\n    API: Takes two required arguments. The first is the name of the table being listed, and the second is the id of the project.\n    Takes one required variable in the URL request: a dictionary with at least one item with the index \'fields\'. The value of request.vars[fields] provides the fields to be used to represent each record in the list.\n    """\n    response.files.append(URL(\'static\', \'plugin_listandedit/plugin_listandedit.css\'))\n    response.files.append(URL(\'static\', \'plugin_listandedit/plugin_listandedit.js\'))\n\n    tablename = request.args[0]\n    fieldnames = request.vars[\'fields\']\n\n    rowlist = \'\'\n    if not tablename in db.tables():\n        response.flash = \'Sorry, you are trying to list entries from a table that does not exist in the database.\'\n    else:\n        tb = db[tablename]\n        rowlist = db(tb).select()\n\n    listset = []\n    for r in rowlist:\n        listformat = \'\'\n        for f in fieldnames:\n            listformat += r.f + \', \'\n\n        i = A(listformat, _href=URL(\'plugin_listandedit\', \'edit.load\', args=[tablename, r.id]), _class=\'plugin_listandedit_list\', cid=\'viewpane\')\n        listset.append(i)\n\n    return dict(listset = listset)\n\ndef edit():\n    tablename = request.args[0]\n    rowid = request.args[1]\n    form = crud.update(db[tablename], rowid)\n\n    return dict(form = form)\n\nresponse._vars=response._caller(list)\n'
+p6
+sS'snapshot'
+p7
+(dp8
+sS'traceback'
+p9
+S'Traceback (most recent call last):\n  File "/home/ian/web2py/gluon/restricted.py", line 194, in restricted\n    exec ccode in environment\n  File "/home/ian/web2py/applications/topoi/controllers/plugin_listandedit.py", line 39, in <module>\n  File "/home/ian/web2py/gluon/globals.py", line 149, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/ian/web2py/applications/topoi/controllers/plugin_listandedit.py", line 25, in list\n    listformat += r.f + \', \'\n  File "/home/ian/web2py/gluon/dal.py", line 3851, in __getattr__\n    return self[key]\n  File "/home/ian/web2py/gluon/dal.py", line 3842, in __getitem__\n    return dict.__getitem__(self, key)\nKeyError: \'f\'\n'
+p10
+s.
