@@ -20,7 +20,7 @@ response.menu = [
     ]
 
 response.menu+=[
-    (T('This App'), False, URL('admin', 'default', 'design/%s' % request.application),
+    (T('S'), False, URL('admin', 'default', 'design/%s' % request.application),
      [
             (T('Controller'), False,
              URL('admin', 'default', 'edit/%s/controllers/%s.py' \

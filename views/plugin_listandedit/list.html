@@ -1,5 +1,5 @@
-{{extend 'plugin_framework/plugin_framework.html'}}
-<h1></h1>
+{{extend 'layout.html'}}
+<h1>Listing Records</h1>
 
 <section id="viewpane">
 Please select an item from the list.
@@ -10,5 +10,5 @@ Please select an item from the list.
    {{for l in listset:}}
       <li>{{=l}}</li>
    {{pass}}
-   </ul>    
+   </ul>
 </section>

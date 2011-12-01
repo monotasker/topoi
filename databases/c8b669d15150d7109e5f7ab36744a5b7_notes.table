@@ -50,11 +50,11 @@ ssS'excerpt'
 p21
 (dp22
 g4
-g11
+g5
 sg6
 I7
 sg7
-S'CHAR(512)'
+S'TEXT'
 p23
 ssS'label'
 p24

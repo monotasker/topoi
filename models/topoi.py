@@ -11,13 +11,13 @@ db.define_table('locations',
     Field('location', 'string'),
     format='%(location)s')
 
-db.define_table('authors', 
+db.define_table('authors',
     Field('name', 'string', default='anonymous'),
     Field('location', db.locations),
-    Field('lived', 'string'), 
+    Field('lived', 'string'),
     format='%(name)s')
-db.authors.location.widget = lambda field, value: add_option.widget(field, value, 'locations') 
-        
+db.authors.location.widget = lambda field, value: add_option.widget(field, value, 'locations')
+
 db.define_table('works',
     Field('title', 'string'),
     Field('author', db.authors),
@@ -40,14 +40,14 @@ db.define_table('tags',
     Field('creator', db.auth_user, default=auth.user_id),
     Field('project', db.projects),
     format='%(tagname)s')
-    
+
 db.define_table('notes',
     Field('label', 'string'),
     Field('user', db.auth_user, default=auth.user_id),
     Field('author', db.authors),
     Field('work', db.works),
     Field('reference'),
-    Field('excerpt'),
+    Field('excerpt', 'text'),
     Field('body', 'text'),
     Field('tags', 'list:reference db.tags'),
     Field('last_edited', 'datetime', default=datetime.datetime.utcnow()),
