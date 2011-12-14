@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+{{for a in articles:}}
+<article>
+    {{=H2(a.title)}}
+    {{=SPAN(a.created)}}
+    {{=P(a.teaser)}}
+    {{=A('read more', _href=URL('articles', args=[a.id]))}}
+</article>
+{{pass}}

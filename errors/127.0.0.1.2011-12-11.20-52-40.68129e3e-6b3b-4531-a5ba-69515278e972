@@ -1,0 +1,20 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/home/ian/web2py/applications/topoi/controllers/plugin_ajaxselect.py'
+p4
+sS'code'
+p5
+S'from gluon.sqlhtml import OptionsWidget\n\ndef set_widget():\n    """\n    creates an instance of the OptionsWidget class defined in gluon.sqlhtml and returns the result to populate the ajax LOAD field\n    """\n    field = request.args[0]\n    value = request.args[1]\n\n    fieldset = field.split(\'.\')\n    tablename = fieldset[0]\n    fieldname = fieldset[1]\n\n    the_field = db[tablename]\n    print the_field\n\n    w = OptionsWidget.widget(the_field, value)\n    return dict(widget = w)\n\nresponse._vars=response._caller(set_widget)\n'
+p6
+sS'snapshot'
+p7
+(dp8
+sS'traceback'
+p9
+S'Traceback (most recent call last):\n  File "/home/ian/web2py/gluon/restricted.py", line 194, in restricted\n    exec ccode in environment\n  File "/home/ian/web2py/applications/topoi/controllers/plugin_ajaxselect.py", line 20, in <module>\n  File "/home/ian/web2py/gluon/globals.py", line 149, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/ian/web2py/applications/topoi/controllers/plugin_ajaxselect.py", line 17, in set_widget\n    w = OptionsWidget.widget(the_field, value)\n  File "/home/ian/web2py/gluon/sqlhtml.py", line 210, in widget\n    attr = OptionsWidget._attributes(field, default, **attributes)\n  File "/home/ian/web2py/gluon/sqlhtml.py", line 74, in _attributes\n    _id = \'%s_%s\' % (field._tablename, field.name),\n  File "/home/ian/web2py/gluon/dal.py", line 4921, in __getattr__\n    return self[key]\n  File "/home/ian/web2py/gluon/dal.py", line 4865, in __getitem__\n    return dict.__getitem__(self, str(key))\nKeyError: \'name\'\n'
+p10
+s.
