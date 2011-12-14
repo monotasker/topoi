@@ -29,8 +29,6 @@
 
     <!--  require CSS and JS files for this page (read info in base.css) -->
     {{response.files.append(URL('static','plugin_framework/normalize.css'))}}
-    {{response.files.append(URL('static','plugin_framework/framework.css'))}}
-    {{response.files.append(URL('static','plugin_framework/theme.css'))}}
     {{response.files.append(URL('static','css/superfish.css'))}}
     {{response.files.append(URL('static','js/superfish.js'))}}
     {{response.files.append(URL('static', 'plugin_framework/jquery-ui/jquery-ui-1.8.16.custom.min.js'))}}
@@ -79,29 +77,32 @@
     <header>
 
         {{block header}} <!-- this is default header -->
+
+            <nav>
+              {{block statusbar}} <!-- this is default statusbar -->
+              {{#------ superfish menu ------}}
+              {{=MENU(response.menu,_class='sf-menu')}}
+              <script type="text/javascript">
+                jQuery(document).ready(function(){
+                jQuery('ul.sf-menu').superfish();});
+              </script>
+              <div class="clear"></div><!-- Clear the divs -->
+              {{end}}
+            </nav>
+
             {{try:}}
-                {{=auth.navbar(action=URL('default','user'))}}
+                {{navbar = auth.navbar(action=URL('default','user'))}}
+                {{del navbar[0], navbar[-1]}}
+                {{=navbar}}
             {{except:}}
                 {{pass}}
             {{pass}}
+
             <h1 id="appname">{{=A(request.application.capitalize(), _href=URL('default', 'index'))}}</h1>
-            {{#FIXME--Shift this clearing div to css after}}
-            <div class="clear"></div><!-- Clear the divs -->
+
         {{end}}
 
     </header>
-
-    <nav><!-- statusbar is menu zone -->
-      {{block statusbar}} <!-- this is default statusbar -->
-      {{#------ superfish menu ------}}
-      {{=MENU(response.menu,_class='sf-menu')}}
-      <script type="text/javascript">
-        jQuery(document).ready(function(){
-        jQuery('ul.sf-menu').superfish();});
-      </script>
-      <div class="clear"></div><!-- Clear the divs -->
-      {{end}}
-    </nav><!-- statusbar -->
 
     <div id="page" class="{{=request.controller}} {{=request.function}}">
 

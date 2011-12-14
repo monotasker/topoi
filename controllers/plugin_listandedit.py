@@ -16,14 +16,14 @@ def list():
         response.flash = 'Sorry, you are trying to list entries from a table that does not exist in the database.'
     else:
         tb = db[tablename]
-        rowlist = db(tb).select()
+        rowlist = db().select(tb.id, tb.reference, db.works.title, db.authors.name)
 
     listset = []
     for r in rowlist:
         #FIXME: I need to get these values programmatically from vars['fields']
-        listformat = r.author, ', ', r.work, ', ', r.reference
+        listformat = r['authors'].name, ', ', r['works'].title, ', ', r[tablename].reference
 
-        i = A(listformat, _href=URL('plugin_listandedit', 'edit.load', args=[tablename, r.id]), _class='plugin_listandedit_list', cid='viewpane')
+        i = A(listformat, _href=URL('plugin_listandedit', 'edit.load', args=[tablename, r[tablename].id]), _class='plugin_listandedit_list', cid='viewpane')
         listset.append(i)
 
     return dict(listset = listset)

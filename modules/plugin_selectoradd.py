@@ -4,11 +4,12 @@ from gluon.sqlhtml import *
 from gluon.compileapp import LoadFactory
 from gluon import current
 from plugin_multiselect_widget import hmultiselect_widget, vmultiselect_widget
+from plugin_ajaxselect import AjaxSelect
 
 #FIXME: set track changes to false when dev is finished
 track_changes(True)
 
-class SELECT_OR_ADD_OPTION(object):
+class SelectOrAddOption(object):
 
     def __init__(self, controller = None, function = None, form_title = None, button_text = None, dialog_width = 450):
         self.T = current.T
@@ -30,7 +31,7 @@ class SELECT_OR_ADD_OPTION(object):
         LOAD = LoadFactory(environment)
 
         #generate the standard widget for this field
-        select_widget = OptionsWidget.widget(field, value)
+        select_widget = AjaxSelect(field, value).widget()
 
         #get the widget's id (need to know later on so can tell receiving controller what to update)
         my_select_id = select_widget.attributes.get('_id', None)
@@ -52,11 +53,11 @@ class SELECT_OR_ADD_OPTION(object):
         wrapper = DIV(_id = my_select_id + "_adder_wrapper")
         wrapper.components.extend([select_widget, form_loader_div, activator_button, jq_script])
         return wrapper
-        
-        
-class MULTISELECT_OR_ADD_OPTION(SELECT_OR_ADD_OPTION):
-            
-    #FIXME: FIND a way to reduce repeated code in this subclass            
+
+
+class MULTISELECT_OR_ADD_OPTION(SelectOrAddOption):
+
+    #FIXME: FIND a way to reduce repeated code in this subclass
     def widget(self, field, value, tablename):
         # initialize LOAD helper
         environment = {'request': current.request, 'response': current.response}
@@ -83,5 +84,5 @@ class MULTISELECT_OR_ADD_OPTION(SELECT_OR_ADD_OPTION):
         wrapper = DIV(_id = my_select_id + "_adder_wrapper")
         wrapper.components.extend([select_widget, form_loader_div, activator_button, jq_script])
         return wrapper
-        
-        
+
+

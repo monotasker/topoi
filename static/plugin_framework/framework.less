@@ -1,6 +1,8 @@
 
 /* layout dimensions */
-@pagewidth: 920px;
+@pagewidth: 90%;
+@maxpagewidth:920px;
+@minpagewidth:640px;
 
 /* text dimensions */
 @typeheight: 14px;
@@ -29,6 +31,8 @@
 @col2:#AAE557;
 @col3:#EBFC97;
 @col4:#852625;
+@brown1:rgba(217, 158, 82, 1.0);
+@brown2:rgba(149,105,41,1.0);
 
 @grey1:#f5f5f5;
 @grey2:#eee;
@@ -100,7 +104,7 @@ form div{
     min-height:260px;
     background-color:#fff;
     border-radius:2px;
-    box-shadow:0 2px 12px rgba(0,0,0,0.7);
+    .box-shadow(0,2px,12px,rgba(0,0,0,0.7));
     z-index:1;
     margin-left:-200px;
 }
@@ -167,9 +171,10 @@ form td {
 header, #page, footer {
     position: relative;
     width:@pagewidth;
+    min-width:@minpagewidth;
     background-color: #fff;
     margin:0 auto;
-    padding:14px;
+    padding:@typeheight;
 }
 
 header {
@@ -177,15 +182,21 @@ header {
 }
 
 nav {
-    margin:0 auto;
-    width:@pagewidth;
+    margin:0;
+    float:right;
 }
 
 /* web2py specific */
 
 .auth_navbar {
     position: relative;
+    display:block;
     float:right;
+    height:@lineheight2;
+    line-height:@lineheight2;
+}
+
+.auth_navbar a{
 }
 
 div.flash {
@@ -215,20 +226,37 @@ div.error {
 }
 
 /* non-semantic utility classes */
+
 .clear{
     clear:both;
     padding:0;
 }
 
-.border-radius(@a:0, @b:0, @c:0, @d:0){
-    border-radius: @a @b @c @d;
-    -moz-border-radius: @a @b @c @d;
-    -webkit-border-radius: @a @b @c @d;
-    -o-border-radius: @a @b @c @d;
-    -ms-border-radius: @a @b @c @d;
+.text-shadow(@x:0, @y:2px, @blur:3px, @color:rgba(0,0,0,0.5)){
+    -moz-text-shadow:@arguments;
+    -webkit-text-shadow:@arguments;
+    -o-text-shadow:@arguments;
+    -ms-text-shadow:@arguments;
+    text-shadow:@arguments;
 }
 
-.box-shadow(@x: 0, @y: 2, @blur: 6px, @color: rgba(0,0,0,0.3)) {
+.inset-text() {
+    -moz-text-shadow: 0 -1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(270,270,270,0.5);
+    -webkit-text-shadow: 0 -1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(270,270,270,0.5);
+    -o-text-shadow: 0 -1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(270,270,270,0.5);
+    -ms-text-shadow: 0 -1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(270,270,270,0.5);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(270,270,270,0.5);
+}
+
+.border-radius(@a:0, @b:0, @c:0, @d:0){
+    -moz-border-radius: @arguments;
+    -webkit-border-radius: @arguments;
+    -o-border-radius: @arguments;
+    -ms-border-radius: @arguments;
+    border-radius: @arguments;
+}
+
+.box-shadow(@x: 0, @y:2px, @blur:6px, @color:rgba(0,0,0,0.3)) {
   -moz-box-shadow: @arguments;
   -webkit-box-shadow: @arguments;
   -o-box-shadow: @arguments;

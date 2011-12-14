@@ -1,9 +1,10 @@
 # coding: utf8
-from plugin_selectoradd import SELECT_OR_ADD_OPTION, MULTISELECT_OR_ADD_OPTION
+from plugin_selectoradd import SelectOrAddOption, MULTISELECT_OR_ADD_OPTION
 from plugin_multiselect_widget import hmultiselect_widget, vmultiselect_widget
+from plugin_ajaxselect import AjaxSelect
 import datetime
 
-add_option = SELECT_OR_ADD_OPTION(form_title="Add new", controller="plugin_selectoradd", function="add", button_text = "Add New", dialog_width=500)
+add_option = SelectOrAddOption(form_title="Add new", controller="plugin_selectoradd", function="add", button_text = "Add New", dialog_width=500)
 
 multi_add_option = MULTISELECT_OR_ADD_OPTION(form_title="Add new", controller="plugin_selectoradd", function="add", button_text = "Add New", dialog_width=500)
 
@@ -52,10 +53,11 @@ db.define_table('notes',
     Field('tags', 'list:reference db.tags'),
     Field('last_edited', 'datetime', default=datetime.datetime.utcnow()),
     Field('project', db.projects),
-    format='%(label)s')
+    format='%(author)s, %(work)s, %(reference)s')
 #Initialize the add-or-select widget
-db.notes.author.widget = lambda field, value: add_option.widget(field, value, 'authors')
-db.notes.work.widget = lambda field, value: add_option.widget(field, value, 'works')
-db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, multiple = True)
-db.notes.tags.widget = lambda field, value: multi_add_option.widget(field, value, 'tags')
-db.notes.project.widget = lambda field, value: add_option.widget(field, value, 'projects')
+#db.notes.author.widget = lambda field, value: add_option.widget(field, value, 'authors')
+db.notes.author.widget = lambda field, value: AjaxSelect(field, value).widget()
+#db.notes.work.widget = lambda field, value: add_option.widget(field, value, 'works')
+#db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, multiple = True)
+#db.notes.tags.widget = lambda field, value: multi_add_option.widget(field, value, 'tags')
+#db.notes.project.widget = lambda field, value: add_option.widget(field, value, 'projects')

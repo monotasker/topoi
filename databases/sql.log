@@ -118,3 +118,21 @@ timestamp: 2011-11-21T11:15:27.583249
 ALTER TABLE notes ADD work INTEGER REFERENCES works(id) ON DELETE CASCADE;
 timestamp: 2011-11-21T11:15:27.655629
 ALTER TABLE notes ADD tags INTEGER REFERENCES tags(id) ON DELETE CASCADE;
+timestamp: 2011-12-08T01:35:00.345595
+CREATE TABLE blog_tags(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tagname CHAR(512)
+);
+success!
+timestamp: 2011-12-08T01:35:00.471438
+CREATE TABLE articles(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author CHAR(512),
+    title CHAR(512),
+    created TIMESTAMP,
+    body TEXT,
+    teaser TEXT,
+    pullquote TEXT,
+    blog_tags INTEGER REFERENCES blog_tags(id) ON DELETE CASCADE
+);
+success!
