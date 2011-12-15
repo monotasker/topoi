@@ -8,9 +8,10 @@ session = current.session
 track_changes(True)
 
 class AjaxSelect:
-    def __init__(self, field, value):
+    def __init__(self, field, value, linktable):
         self.field = field
         self.value = value
+        self.linktable = linktable
 
     def widget(self):
         # initialize LOAD helper
@@ -24,8 +25,10 @@ class AjaxSelect:
         tablename = fieldset[0]
         fieldname = fieldset[1]
 
+        loadname = '%s_%s' %(tablename, fieldname)
+
         #create component wrapper with ajax loading helper
         wrapper = LOAD('plugin_ajaxselect', 'set_widget.load',
-            args=[tablename, fieldname, self.value], ajax=True)
+            args=[tablename, fieldname, self.value, self.linktable, loadname], ajax=True, target=loadname)
 
         return wrapper
