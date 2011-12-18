@@ -136,3 +136,5 @@ CREATE TABLE articles(
     blog_tags INTEGER REFERENCES blog_tags(id) ON DELETE CASCADE
 );
 success!
+timestamp: 2011-12-15T14:24:22.235606
+ALTER TABLE notes ADD created TIMESTAMP;

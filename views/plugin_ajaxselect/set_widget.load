@@ -1,18 +1,18 @@
 {{=widget}}{{=button}}
 
 <script>
-    the_content = '{{=form}}'
+    //$dialog = $('#modal_frame')
+    //    .dialog({autoOpen: false});
 
-    $dialog = $('#modal_frame')
-        .dialog({autoOpen: false})
-        .bind('dialogclose', function(){ web2py_component('{{=comp_url}}', '{{=loadname}}'); });
+    //$('.option_add_trigger').live('click', function(event){
+    //    $('#{{#=loadname}}').append('{{#=form}}');
 
-    $('.option_add_trigger').live('click', function(event){
-
-        //open the modal dialog using jquery-ui
-        $dialog.html(the_content).dialog('open');
+        //$dialog.html(the_content).dialog('open');
         //stop the link from opening a new URL as usual
-        event.preventDefault();
+        //event.preventDefault();
+    //});
 
-    });
+
+    $('#{{=loadname}} select').unwrap();
+
 </script>

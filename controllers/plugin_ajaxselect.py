@@ -17,14 +17,29 @@ def set_widget():
     the_field = the_table[field]
     the_linktable = db[linktable]
 
+    #create HTML select widget using OptionsWidget class from gluon.sqlhtml
     w = OptionsWidget.widget(the_field, value)
+    print w
 
-    f = SQLFORM(the_linktable)
-
+    #URL to reload component
     comp_url = URL('plugin_ajaxselect', 'set_widget.load', args=[table, field, value, linktable, loadname])
 
-    #create button to trigger adding dialog
-    bid = table + '_' + field + '_option_add_trigger'
-    button = A('Add New', _href='#', _id=bid, _class='option_add_trigger')
+    """
+    formname = '%s/create' % (linktable)
 
-    return dict(widget = w, button = button, form = f, comp_url = comp_url, loadname = loadname)
+    form = SQLFORM(the_linktable)
+    if form.accepts(request, session, formname = formname):
+        response.flash = 'form accepted'
+        #response.js = "web2py_component('%', '%');" % (comp_url, loadname)
+    else:
+        response.error = 'form was not processed'
+    """
+
+    #create button to trigger table refresh
+    bid = table + '_' + field + '_option_refresh_trigger'
+    button = A('refresh', _href=comp_url, cid=request.cid)
+
+    #create button to trigger adding dialog
+    #button = A('Add New', _href='#', _id=bid, _class='button_secondary option_add_trigger')
+
+    return dict(widget = w, button = button, loadname = loadname) # form = form,
