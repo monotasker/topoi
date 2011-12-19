@@ -1,18 +1,14 @@
-{{=widget}}{{=button}}
+{{=widget}}
 
 <script>
     //$dialog = $('#modal_frame')
     //    .dialog({autoOpen: false});
 
-    //$('.option_add_trigger').live('click', function(event){
-    //    $('#{{#=loadname}}').append('{{#=form}}');
 
-        //$dialog.html(the_content).dialog('open');
+    $('#{{=linktable}}_add_trigger').live('click', function(event){
+        $('#{{=wrappername}}').append('{{=form}}');
+
         //stop the link from opening a new URL as usual
-        //event.preventDefault();
-    //});
-
-
-    $('#{{=loadname}} select').unwrap();
-
+        event.preventDefault();
+    });
 </script>

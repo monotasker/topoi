@@ -42,7 +42,8 @@ def edit():
         response.flash = 'form accepted'
     elif form.errors:
         response.flash = 'something went wrong'
-        print form.errors
+        print(form.errors.author)
+        print(form.vars)
     else:
         pass
 
