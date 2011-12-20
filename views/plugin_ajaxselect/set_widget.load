@@ -1,12 +1,11 @@
 {{=widget}}
 
 <script>
-    //$dialog = $('#modal_frame')
-    //    .dialog({autoOpen: false});
-
-
     $('#{{=linktable}}_add_trigger').live('click', function(event){
-        $('#{{=wrappername}}').append('{{=form}}');
+        $('#modal_frame').html('{{=form2}}').dialog({
+            height:200,
+            width:500
+        });
 
         //stop the link from opening a new URL as usual
         event.preventDefault();
