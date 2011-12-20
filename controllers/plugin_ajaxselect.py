@@ -19,13 +19,14 @@ def set_widget():
 
     formname = '%s/create' % (linktable)
 
-    form = SQLFORM(the_linktable)
-    if form.accepts(request, session, formname = formname):
+    form2 = SQLFORM(the_linktable)
+    if form2.process(formname = formname).accepted:
+        print formname
         response.flash = 'form accepted'
-        response.js = "web2py_component('%', '%');" % (comp_url, wrappername)
+        #response.js = "web2py_component('%', '%');" % (comp_url, wrappername)
     else:
         response.error = 'form was not processed'
 
     w = OptionsWidget.widget(the_field, value)
 
-    return dict(widget = w, wrappername = wrappername, form = form, linktable = linktable)
+    return dict(widget = w, wrappername = wrappername, form2 = form2, linktable = linktable)
