@@ -11,20 +11,21 @@ def set_widget():
     field = request.args[1]
     value = request.args[2]
     linktable = request.args[3]
-    loadname = request.args[4]
+    wrappername = request.args[4]
 
     the_table = db[table]
     the_field = the_table[field]
     the_linktable = db[linktable]
 
+    formname = '%s/create' % (linktable)
+
+    form = SQLFORM(the_linktable)
+    if form.accepts(request, session, formname = formname):
+        response.flash = 'form accepted'
+        response.js = "web2py_component('%', '%');" % (comp_url, wrappername)
+    else:
+        response.error = 'form was not processed'
+
     w = OptionsWidget.widget(the_field, value)
 
-    f = SQLFORM(the_linktable)
-
-    comp_url = URL('plugin_ajaxselect', 'set_widget.load', args=[table, field, value, linktable, loadname])
-
-    #create button to trigger adding dialog
-    bid = table + '_' + field + '_option_add_trigger'
-    button = A('Add New', _href='#', _id=bid, _class='option_add_trigger')
-
-    return dict(widget = w, button = button, form = f, comp_url = comp_url, loadname = loadname)
+    return dict(widget = w, wrappername = wrappername, form = form, linktable = linktable)
