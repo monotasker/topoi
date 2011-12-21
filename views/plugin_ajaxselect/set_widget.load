@@ -2,12 +2,9 @@
 
 <script>
     $('#{{=linktable}}_add_trigger').live('click', function(event){
-        $('#modal_frame').html('{{=form2}}').dialog({
+        $('#modal_frame').dialog({
             height:200,
             width:500
         });
-
-        //stop the link from opening a new URL as usual
-        event.preventDefault();
     });
 </script>

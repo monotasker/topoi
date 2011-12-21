@@ -36,15 +36,19 @@ class AjaxSelect:
         tablename = fieldset[0]
         fieldname = fieldset[1]
 
-
+        #build name for the span that will wrap the select widget
         wrappername = '%s_%s_loader' %(tablename, fieldname)
 
         #URL to reload widget via ajax
         comp_url = URL('plugin_ajaxselect', 'set_widget.load', args=[tablename, fieldname, self.value, self.linktable, wrappername])
 
-        #create component wrapper with ajax loading helper
+        #URL to load form for linking table via ajax
+        add_url = URL('plugin_ajaxselect', 'set_form_wrapper.load', args=[tablename, fieldname, self.value, self.linktable, wrappername])
+
+        #create the span wrapper with the select widget inside
         adder_id = '%s_add_trigger' % (self.linktable)
         w = OptionsWidget.widget(self.field, self.value)
-        wrapper = SPAN(w, _id=wrappername), A('refresh', _href=comp_url, cid=wrappername), A('add new', _href='#', _id=adder_id)
+        
+        wrapper = SPAN(w, _id=wrappername), A('refresh', _href=comp_url, cid=wrappername), A('add new', _href=add_url, _id=adder_id, cid='modal_frame')
 
         return wrapper
