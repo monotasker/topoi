@@ -1,16 +1,15 @@
-
 /* layout dimensions */
-@pagewidth: 90%;
-@maxpagewidth:920px;
+@pagewidth: @typeheight * 60;
+@maxpagewidth:@typeheight * 60;        
 @minpagewidth:640px;
 
 /* text dimensions */
 @typeheight: 14px;
-@lineheight: 21px;
-@typeheight2: 21px;
-@lineheight2: 28px;
-@typeheight3: 28px;
-@lineheight3: 42px;
+@lineheight: @typeheight * 1.5;
+@typeheight2: @typeheight * 1.5;
+@lineheight2: @lineheight * 1.5;
+@typeheight3: @typeheight * 2;
+@lineheight3: @lineheight * 2;
 @fonts1:"Palatino Linotype", serif;
 
 /* colours */
@@ -86,6 +85,7 @@ a:hover, a:active, a:link{
 .heading() {
     font-family: @fonts1;
     display:block;
+    margin:0;
 }
 
 h1, h2, h3 {
@@ -114,7 +114,6 @@ form div{
     padding:0;
 }
 
-/*
 #modal_frame {
     display:none;
     position:absolute;
@@ -129,7 +128,11 @@ form div{
     z-index:1;
     margin-left:-200px;
 }
-*/
+
+/* lists */
+
+
+
 /* forms */
 
 input[type=text], select, textarea {
@@ -189,7 +192,7 @@ header, #page, footer {
     min-width:@minpagewidth;
     background-color: #fff;
     margin:0 auto;
-    padding:@typeheight;
+    padding:0;
 }
 
 header {
@@ -298,7 +301,7 @@ div.error {
     background-position:0 -10px;
     background-repeat:no-repeat;
 }
-
+    
 .linear-gradient(@col1:#fff, @col2:#fff){
     background-color:@col2;
     background-image:-moz-linear-gradient(@col1, @col2);

@@ -21,13 +21,14 @@ body {
 header {
     position:relative;
     display:block;
+    height:@lineheight3;
     .linear-gradient(@brown1, @brown2);
     .box-shadow(0,2px,6px,rgba(0,0,0,0.3));
     z-index:99;
-    padding:0 @typeheight;
+    padding:0;
 
     h1 a {
-        margin:0 @typeheight;
+        margin:0 @lineheight;
         color:#fff;
         .inset-text;
     }
@@ -76,7 +77,7 @@ nav {
 
             a {
                 border-right:none;
-                padding-right:@lineheight2;
+                padding-l:@lineheight2;
             }
 
             li {
@@ -106,27 +107,48 @@ nav {
     background-color:@grey1;
     .box-shadow(0,2px,6px,rgba(0,0,0,0.3));
     z-index:1;
+    
+    h2:first-child {
+        position:relative;
+        margin-left:@lineheight;
+    }
+    
 }
 
-h2 {
-    padding-top:0;
-    margin:0;
-}
+
 
 #viewpane, #listpane {
     position:relative;
-    border-right:1px solid transparent;
-    border-left:1px solid transparent;
+    border-right:1px solid red;
+    border-left:1px solid red;
     padding:0;
 }
 
 #listpane {
+
+    width:@typeheight * 19;
+
     li {
         display:block;
         height:@lineheight2;
         line-height:@lineheight2;
         overflow:hidden;
+        padding-left:@lineheight;
+        .linear-gradient(#f5f5f5, #eeeeee);
     }
+}
+
+#listpane:after {
+    content:' ';
+}
+
+#listpane:before {
+    content:' ';
+    .tapered-shadow;
+}
+
+#viewpane {
+    width: @typeheight * 40;
 }
 
 #viewpane:before {
@@ -137,11 +159,6 @@ h2 {
         padding:0;
         margin:0;
     }
-}
-
-#listpane:before {
-    content:' ';
-    .tapered-shadow;
 }
 
 footer {
