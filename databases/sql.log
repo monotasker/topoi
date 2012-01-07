@@ -138,3 +138,11 @@ CREATE TABLE articles(
 success!
 timestamp: 2011-12-15T14:24:22.235606
 ALTER TABLE notes ADD created TIMESTAMP;
+timestamp: 2012-01-04T18:31:31.038704
+ALTER TABLE auth_user ADD registration_id CHAR(512);
+timestamp: 2012-01-04T18:31:31.188445
+ALTER TABLE auth_cas ADD service CHAR(512);
+timestamp: 2012-01-04T18:31:31.290273
+ALTER TABLE auth_cas ADD renew CHAR(1);
+timestamp: 2012-01-04T18:31:31.378621
+ALTER TABLE auth_cas ADD ticket CHAR(512);

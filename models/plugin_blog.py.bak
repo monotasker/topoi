@@ -3,7 +3,7 @@ db.define_table('blog_tags',
     format='%(tagname)s')
 
 db.define_table('articles',
-    Field('author', db.auth_user, default = auth.user_id),
+    Field('author'),
     Field('title'),
     Field('created', 'datetime'),
     Field('body', 'text'),

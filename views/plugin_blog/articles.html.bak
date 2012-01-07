@@ -1,4 +1,4 @@
 {{extend 'layout.html'}}
 {{=H2(a.title)}}
 {{=SPAN(a.created)}}
-{{=XML(a.body)}}
+{{=a.body}}

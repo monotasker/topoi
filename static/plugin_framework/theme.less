@@ -107,12 +107,17 @@ nav {
     background-color:@grey1;
     .box-shadow(0,2px,6px,rgba(0,0,0,0.3));
     z-index:1;
-    
+
     h2:first-child {
         position:relative;
         margin-left:@lineheight;
     }
-    
+
+    article {
+        padding:@lineheight3;
+
+    }
+
 }
 
 
@@ -173,4 +178,38 @@ footer {
     top:0;
     margin-left:-140px;
     z-index:100;
+}
+
+/* ================= iPad in portrait ================= */
+@media all and (orientation:portrait){
+}
+
+/* ================= iPad in landscape ================= */
+@media all and (orientation:landscape){
+}
+
+/* ================= iPhone4 (retina screen) ================= */
+@media only screen
+and (-webkit-min-device-pixel-ratio: 2)
+and (max-device-width: 480px){
+}
+
+/* ================= Intermediate browser viewing area (480px+)================= */
+@media only screen and (min-width: 480px){
+
+}
+
+/* ================= Wide browser viewing area (768px +) ==================== */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* ================= Max browser viewing area (1140px +) ==================== */
+@media only screen and (min-width: 1140px) {
+
+}
+
+/* ============================================================================= Print styles. Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/ ========================================================================== */
+@media print {
+
 }
