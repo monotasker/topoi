@@ -1,3 +1,7 @@
+if 0:
+    from gluon import current
+    request = current.request
+
 from gluon.sqlhtml import OptionsWidget
 
 def set_widget():

@@ -3,18 +3,32 @@ from gluon.custom_import import track_changes
 from gluon.html import URL
 from gluon.sqlhtml import OptionsWidget
 
-session = current.session
-request = current.request
+session, request, response = current.session, current.request, current.response
+
+response.files.append(URL('static','plugin_ajaxselect/plugin_ajaxselect.js'))
 
 #TODO: set track changes to false when dev is finished
 track_changes(True)
 
 class AjaxSelect:
     """
-    Creates a select widget wrapped that can be refreshed via ajax without resetting
-    the entire form,
+    This plugin creates a select widget wrapped that can be refreshed via ajax without resetting
+    the entire form. It also provides an "add new" button that allows users to add a new item to
+    the table that populates the select widget via ajax. The widget is then automatically refreshed
+    via ajax so that the new item is visible as a select option and can be chosen. All of this
+    happens without a page or form refresh so that data entered in other fields is not lost or submitted.
 
-    Usage: In a web2py model file, import this class and then apply it as
+    Installation:
+    1. download the plugin file;
+    2. In the web2py online ide (design view for your app) scroll to the bottom section labeled "Plugins";
+    3. At the bottom of that section is a widget to "upload plugin file". Click "Browse".
+    4. In the file selection window that opens, navigate to the downloaded plugin file, select it, and
+        click "open". The file selection window should close.
+    5. Click the "upload" button.
+    The plugin should now be installed and ready to use.
+
+    Usage:
+    In a web2py model file, import this class and then apply it as
     the widget-factory for one or more db fields. To do this for a field named
     'author' from a table named 'notes' you would add this line somewhere in
     the model file:
@@ -31,6 +45,8 @@ class AjaxSelect:
 
     adder (True/False; defaults to True): a button to add a new record to the linked
     table that populates the select widget.
+
+    Future functionality (not yet implemented):
 
     restricted ({fieldname}): adds a dynamic constraint on the records displayed in the
     select widget. When the specified form field (within the same form) has its value
@@ -89,7 +105,7 @@ class AjaxSelect:
         s = SPAN(self.w, _id=self.wrappername)
         refresher = A('refresh', _href=self.comp_url, cid=self.wrappername)
         f = '%s_adder_form' % self.linktable
-        adder = A('add new', _href=self.add_url, _id=self.adder_id, cid=f)
+        adder = A('add new', _href=self.add_url, _id=self.adder_id, _class='add_trigger', cid=f)
         dialog = DIV('', _id=f)
 
         if not self.refresher:

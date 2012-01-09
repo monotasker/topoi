@@ -59,13 +59,13 @@ p23
 ssS'label'
 p24
 (dp25
-S'sortable'
+S'type'
 p26
-I2
-sS'type'
-p27
 S'string'
+p27
+sS'sortable'
 p28
+I2
 sS'sql'
 p29
 S'CHAR(512)'
