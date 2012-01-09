@@ -17,7 +17,7 @@ db.define_table('authors',
     Field('location', db.locations),
     Field('lived', 'string'),
     format='%(name)s')
-#db.authors.location.widget = lambda field, value: add_option.widget(field, value, 'locations')
+db.authors.location.widget = lambda field, value: AjaxSelect(field, value, 'locations').widget()
 
 db.define_table('works',
     Field('title', 'string'),
@@ -56,7 +56,7 @@ db.define_table('notes',
     format='%(author)s, %(work)s, %(reference)s')
 #Initialize the add-or-select widget
 db.notes.author.widget = lambda field, value: AjaxSelect(field, value, 'authors').widget()
-#db.notes.work.widget = lambda field, value: AjaxSelect(field, value, 'works').widget()
+db.notes.work.widget = lambda field, value: AjaxSelect(field, value, 'works').widget()
 db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, multiple = True)
 #db.notes.tags.widget = lambda field, value: multi_add_option.widget(field, value, 'tags')
 #db.notes.project.widget = lambda field, value: add_option.widget(field, value, 'projects')

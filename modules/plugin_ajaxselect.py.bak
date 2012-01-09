@@ -1,4 +1,4 @@
-from gluon import sqlhtml, current, SPAN, A, DIV
+from gluon import sqlhtml, current, SPAN, A
 from gluon.custom_import import track_changes
 from gluon.html import URL
 from gluon.sqlhtml import OptionsWidget

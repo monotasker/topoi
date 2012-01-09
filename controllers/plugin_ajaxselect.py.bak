@@ -16,9 +16,11 @@ def set_widget():
     the_field = the_table[field]
     the_linktable = db[linktable]
 
-    w = OptionsWidget.widget(the_field, value) 
+    w = OptionsWidget.widget(the_field, value)
 
-    return dict(widget = w, linktable = linktable)
+    formwrapper = LOAD('plugin_ajaxselect', 'linked_create_form.load', args=[table, field, value, linktable, wrappername], ajax=True)    
+
+    return dict(widget = w, linktable = linktable, formwrapper = formwrapper)
 
 def set_form_wrapper():
     """
