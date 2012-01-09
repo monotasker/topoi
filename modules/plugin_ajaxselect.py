@@ -1,5 +1,4 @@
 from gluon import sqlhtml, current, SPAN, A
-from gluon.compileapp import LoadFactory
 from gluon.custom_import import track_changes
 from gluon.html import URL
 from gluon.sqlhtml import OptionsWidget
@@ -7,7 +6,7 @@ from gluon.sqlhtml import OptionsWidget
 session = current.session
 request = current.request
 
-#FIXME: set track changes to false when dev is finished
+#TODO: set track changes to false when dev is finished
 track_changes(True)
 
 class AjaxSelect:
@@ -45,10 +44,57 @@ class AjaxSelect:
     widget updated via ajax.
 
     """
-    def __init__(self, field, value, linktable):
+    #TODO: Implement boolean adder switch
+
+    def __init__(self, field, value, linktable, refresher = True, restricted = "None", restrictor = "None"):
         self.field = field
         self.value = value
         self.linktable = linktable
+        self.refresher = refresher
+        self.restricted = restricted
+        self.restrictor = restrictor
+        self.tablename = ""
+        self.fieldname = ""
+        self.wrappername = ""
+        self.comp_url = ""
+        self.add_url = ""
+        self.adder_id = ""
+        self.wrapper = ""
+        self.w = ""
+
+
+    def get_fieldset(self):
+        #get field and tablenames for element id's
+        fieldset = str(self.field).split('.')
+        self.tablename = fieldset[0]
+        self.fieldname = fieldset[1]
+
+    def build_info(self):
+        #build name for the span that will wrap the select widget
+        self.wrappername = '%s_%s_loader' %(self.tablename, self.fieldname)
+
+        #URL to reload widget via ajax
+        self.comp_url = URL('plugin_ajaxselect', 'set_widget.load', args=[self.tablename, self.fieldname, self.value, self.linktable, self.wrappername])
+
+        #URL to load form for linking table via ajax
+        self.add_url = URL('plugin_ajaxselect', 'set_form_wrapper.load', args=[self.tablename, self.fieldname, self.value, self.linktable, self.wrappername])
+
+    def create_widget(self):
+        #create the select widget
+        self.adder_id = '%s_add_trigger' % self.linktable
+        self.w = OptionsWidget.widget(self.field, self.value)
+        print(self.w)
+
+    def create_wrapper(self):
+        #create the span wrapper and place the select widget inside, along with buttons to add and refresh if necessary
+        s = SPAN(self.w, _id=self.wrappername)
+        refresher = A('refresh', _href=self.comp_url, cid=self.wrappername)
+        adder = A('add new', _href=self.add_url, _id=self.adder_id, cid='modal_frame')
+
+        if not self.refresher:
+            self.wrapper = s, adder
+        else:
+            self.wrapper = s, refresher, adder
 
     def widget(self):
         """
@@ -57,24 +103,12 @@ class AjaxSelect:
         refreshing the whole form.
         """
 
-        #get field and tablenames for element id's
-        fieldset = str(self.field).split('.')
-        tablename = fieldset[0]
-        fieldname = fieldset[1]
+        self.get_fieldset()
 
-        #build name for the span that will wrap the select widget
-        wrappername = '%s_%s_loader' %(tablename, fieldname)
+        self.build_info()
 
-        #URL to reload widget via ajax
-        comp_url = URL('plugin_ajaxselect', 'set_widget.load', args=[tablename, fieldname, self.value, self.linktable, wrappername])
+        self.create_widget()
 
-        #URL to load form for linking table via ajax
-        add_url = URL('plugin_ajaxselect', 'set_form_wrapper.load', args=[tablename, fieldname, self.value, self.linktable, wrappername])
+        self.create_wrapper()
 
-        #create the span wrapper with the select widget inside
-        adder_id = '%s_add_trigger' % (self.linktable)
-        w = OptionsWidget.widget(self.field, self.value)
-        
-        wrapper = SPAN(w, _id=wrappername), A('refresh', _href=comp_url, cid=wrappername), A('add new', _href=add_url, _id=adder_id, cid='modal_frame')
-
-        return wrapper
+        return self.wrapper

@@ -3,7 +3,7 @@ from gluon.sqlhtml import OptionsWidget
 
 def set_widget():
     """
-    creates an instance of the OptionsWidget class defined in gluon.sqlhtml and returns the result to populate the ajax LOAD field
+    creates a replacement instance of the OptionsWidget class defined in gluon.sqlhtml and returns the result to re-populate the ajax LOAD field
     """
 
     #get variables to build widget for the proper field, with proper current value
