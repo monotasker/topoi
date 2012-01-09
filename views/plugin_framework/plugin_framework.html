@@ -109,28 +109,24 @@
 
         <!-- left_sidebar -->
         {{if left_sidebar_enabled:}}
-            <div id="left_sidebar" {{=XML(left_sidebar_style)}} >
-                <div>
-                    {{block left_sidebar}}
-                        Content Left Sidebar
-                    {{end}}
-                </div>
-            </div>
+            <aside id="left_sidebar" {{=XML(left_sidebar_style)}} >
+                {{block left_sidebar}}
+                    Content Left Sidebar
+                {{end}}
+            </aside>
+        {{pass}}
+
+        <!-- right_sidebar -->
+        {{if right_sidebar_enabled:}}
+            <aside id="right_sidebar" {{=XML(right_sidebar_style)}} >
+                {{block right_sidebar}}
+                    Content Right Sidebar
+                {{end}}
+            </aside>
         {{pass}}
 
         <!-- content of views-->
         {{include}}
-
-        <!-- right_sidebar -->
-        {{if right_sidebar_enabled:}}
-            <div id="right_sidebar" {{=XML(right_sidebar_style)}} >
-                <div style="padding: 4px;">
-                    {{block right_sidebar}}
-                        Content Right Sidebar
-                    {{end}}
-                </div>
-            </div>
-        {{pass}}
 
         <div class="clear"></div><!-- Clear the divs -->
 
