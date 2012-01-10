@@ -25,7 +25,6 @@ def set_widget():
     if len(request.args) > 5:
         filter_val = request.args[5]
         rows = db(the_linktable.author == filter_val).select()
-        print(rows)
         n = table + '_' + field
         w = SELECT(_name=n, *[OPTION(e['title'], _value=e.id) for e in rows])
     else:
