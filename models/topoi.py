@@ -55,8 +55,8 @@ db.define_table('notes',
     Field('project', db.projects),
     format='%(author)s, %(work)s, %(reference)s')
 #Initialize the add-or-select widget
-db.notes.author.widget = lambda field, value: AjaxSelect(field, value, 'authors').widget()
-db.notes.work.widget = lambda field, value: AjaxSelect(field, value, 'works').widget()
+db.notes.author.widget = lambda field, value: AjaxSelect(field, value, 'authors', restrictor='work').widget()
+db.notes.work.widget = lambda field, value: AjaxSelect(field, value, 'works', restricted='author').widget()
 db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, multiple = True)
 #db.notes.tags.widget = lambda field, value: multi_add_option.widget(field, value, 'tags')
 #db.notes.project.widget = lambda field, value: add_option.widget(field, value, 'projects')

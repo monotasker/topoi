@@ -75,9 +75,10 @@ class AjaxSelect:
         self.comp_url = ""
         self.add_url = ""
         self.adder_id = ""
+        self.refresher_id = ""
         self.wrapper = ""
         self.w = ""
-
+        self.classes = ""
 
     def get_fieldset(self):
         #get field and tablenames for element id's
@@ -89,6 +90,17 @@ class AjaxSelect:
         #build name for the span that will wrap the select widget
         self.wrappername = '%s_%s_loader' %(self.tablename, self.fieldname)
 
+        #classes for wrapper span to indicate filtering relationships
+        if self.restricted == 'None':
+            self.classes += ''
+        else:
+            self.classes += 'restricted by_%s' % self.restricted
+
+        if self.restrictor == 'None':
+            self.classes += ''
+        else:
+            self.classes += 'restrictor for_%s' % self.restrictor
+
         #URL to reload widget via ajax
         self.comp_url = URL('plugin_ajaxselect', 'set_widget.load', args=[self.tablename, self.fieldname, self.value, self.linktable, self.wrappername])
 
@@ -98,12 +110,13 @@ class AjaxSelect:
     def create_widget(self):
         #create the select widget
         self.adder_id = '%s_add_trigger' % self.linktable
+        self.refresher_id = '%s_refresh_trigger' % self.linktable
         self.w = OptionsWidget.widget(self.field, self.value)
 
     def create_wrapper(self):
         #create the span wrapper and place the select widget inside, along with buttons to add and refresh if necessary
-        s = SPAN(self.w, _id=self.wrappername)
-        refresher = A('refresh', _href=self.comp_url, cid=self.wrappername)
+        s = SPAN(self.w, _id=self.wrappername, _class = self.classes)
+        refresher = A('refresh', _href=self.comp_url, _id=self.refresher_id, cid=self.wrappername)
         f = '%s_adder_form' % self.linktable
         adder = A('add new', _href=self.add_url, _id=self.adder_id, _class='add_trigger', cid=f)
         dialog = DIV('', _id=f)

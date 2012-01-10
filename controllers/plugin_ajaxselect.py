@@ -1,6 +1,7 @@
 if 0:
-    from gluon import current
-    request = current.request
+    from gluon import current, SELECT, OPTION, SQLFORM, URL
+    from gluon.DAL import db
+    request, response = current.request, current.response
 
 from gluon.sqlhtml import OptionsWidget
 
@@ -14,13 +15,21 @@ def set_widget():
     field = request.args[1]
     value = request.args[2]
     linktable = request.args[3]
-    wrappername = request.args[4]
+    #args[4] is the wrappername, but is not used in this function
 
     the_table = db[table]
     the_field = the_table[field]
     the_linktable = db[linktable]
 
-    w = OptionsWidget.widget(the_field, value) 
+    #testing for the extra argument added by javascript in plugin_ajaxselect.js when refresh is triggered by change in another select value
+    if len(request.args) > 5:
+        filter_val = request.args[5]
+        rows = db(the_linktable.author == filter_val).select()
+        print(rows)
+        n = table + '_' + field
+        w = SELECT(_name=n, *[OPTION(e['title'], _value=e.id) for e in rows])
+    else:
+        w = OptionsWidget.widget(the_field, value)
 
     return dict(widget = w, linktable = linktable)
 
