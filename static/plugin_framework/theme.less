@@ -13,7 +13,7 @@
 
 body {
     background-color:@grey4;
-    .linear-gradient(#bbb,#ccc);
+    .linear-gradient(#eee,#ddd);
     background-repeat: no-repeat;
     z-index:1;
 }
@@ -31,8 +31,11 @@ header {
         margin:0 @lineheight3;
         color:#fff;
         .inset-text;
-        font-family:prociono;
+        font-size:@typeheight2;
+        font-family:Arial;
+        text-transform: uppercase;
         font-weight:normal;
+        letter-spacing: 2px;
     }
 
 }
@@ -118,17 +121,21 @@ nav {
         -moz-hyphens:auto;
         -webkit-hyphens:auto;
         font-family:prociono;
-        letter-spacing:.05em;
-        
+
         .date_created {
-            display:inline-block;
+            display:block;
             color:@light-blue;
+
         }
-        
+
+        .article_wrapper {
+            padding:0;
+        }
+
         p {
-            
+
         }
-        
+
     }
 
 
@@ -139,8 +146,36 @@ nav {
         border-left:1px solid #ccc;
         clear:right;
         margin-left:@lineheight3;
+        font-family:prociono;
+
+        h2 {
+            font-family: Arial;
+            text-transform: uppercase;
+            font-size: @typeheight;
+            letter-spacing: 2px;
+            font-weight: normal;
+            color: #aaa;
+        }
+
+        a, a:link, a:visited {
+            color:@red;
+        }
+
+        div {
+            height: @lineheight;
+            overflow: hidden;
+            padding: 0;
+            -moz-transition: 300ms all;
+        }
+
+        div:hover {
+            height:auto;
+            -moz-transition: 300ms all;
+            transition: 300ms all;
+        }
+
     }
-    
+
     #viewpane, #listpane {
         position:relative;
         border-right:1px solid red;
@@ -189,7 +224,8 @@ nav {
 
 footer {
     background-color:transparent;
-    color:@grey2;
+    color:@white;
+    .text-shadow();
 }
 
 .flash {
@@ -216,12 +252,28 @@ and (max-device-width: 480px){
 }
 
 /* ================= Intermediate browser viewing area (480px+)================= */
-@media only screen and (min-width: 480px){
+@media only screen
+and (max-width: 480px){
+
+#left_sidebar, #right_sidebar {
+    padding:0;
+    width:20px;
+    overflow: hidden;
+}
+
+#left_sidebar:hover, #right_sidebar:hover {
+    padding:@lineheight3;
+    width:30%;
+}
+
 
 }
 
 /* ================= Wide browser viewing area (768px +) ==================== */
-@media only screen and (min-width: 768px) {
+@media only screen
+and (max-width: 768px) {
+
+
 
 }
 

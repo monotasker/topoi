@@ -1,8 +1,8 @@
 {{right_sidebar_enabled = True}}
-{{left_sidebar_enabled = True}}    
+{{left_sidebar_enabled = True}}
 {{extend 'layout.html'}}
 <article>
 {{=H2(a.title, _class='article_title')}}
-{{=SPAN(a.created, _class='date_created')}}
-{{=XML(a.body)}}
+{{=SPAN(created, _class='date_created')}}
+{{=DIV(XML(a.body), _class='article_wrapper')}}
 </article>

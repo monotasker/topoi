@@ -6,7 +6,8 @@ def articles():
     the_id = request.args[0]
     art = db(db.articles.id == the_id).select()
     a = art[0]
-    return dict(a = a)
+    created = a.created.strftime('%B %e, %Y')
+    return dict(a = a, created = created)
 
 def new_post():
     form = crud.create(db.articles)
