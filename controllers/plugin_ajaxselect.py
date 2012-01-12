@@ -23,9 +23,16 @@ def set_widget():
 
     #testing for the extra argument added by javascript in plugin_ajaxselect.js when refresh is triggered by change in another select value
     if len(request.args) > 5:
+        #get the value from the restricting select box to use in filtering this one
         filter_val = request.args[5]
-        rows = db(the_linktable.author == filter_val).select()
+        #find the corresponding field in this select's linked table
+        cf = [f for f in the_linktable.fields if the_linktable[f].type == 'reference authors'][0]
+        print(cf)
+        #filter the rows from the linked table accordingly
+        rows = db(the_linktable[cf] == filter_val).select()
+        #build the name for the refreshed select widget
         n = table + '_' + field
+        #create the widget with filtered options
         w = SELECT(_name=n, *[OPTION(e['title'], _value=e.id) for e in rows])
     else:
         w = OptionsWidget.widget(the_field, value)
