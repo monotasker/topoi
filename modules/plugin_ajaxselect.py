@@ -44,23 +44,21 @@ class AjaxSelect:
     widget via ajax.
 
     adder (True/False; defaults to True): a button to add a new record to the linked
-    table that populates the select widget.
+        table that populates the select widget.
 
-    Future functionality (not yet implemented):
-
-    restricted ({fieldname}): adds a dynamic constraint on the records displayed in the
+    restrictor ({form field name}): adds a dynamic constraint on the records displayed in the
     select widget. When the specified form field (within the same form) has its value
     changed, this select will be refreshed and its displayed records filtered
     accordingly. Note that this is only useful if {fieldname} references values shared
     with the linked table.
-
-    restrictor ({fieldname}): makes this select widget acts as a constraint on the content
-    of another select widget in the same table. When the value of this select is
-    changed, the available values in the {fieldname} widget will be filtered and that
-    widget updated via ajax.
+    
+    e.g., to make the select constrain the widget for the 'works' table:
+    db.notes.author.widget = lambda field, value: AjaxSelect(field, value, 'authors', restrictor='work').widget()
 
     """
     #TODO: Implement boolean adder switch
+    #TODO: Change refresher hiding so that it is style based
+    #TODO: allow for restrictor argument to take list and filter multiple other fields
 
     def __init__(self, field, value, linktable, refresher = True, restricted = "None", restrictor = "None"):
         self.field = field
@@ -91,15 +89,10 @@ class AjaxSelect:
         self.wrappername = '%s_%s_loader' %(self.tablename, self.fieldname)
 
         #classes for wrapper span to indicate filtering relationships
-        if self.restricted == 'None':
-            self.classes += ''
-        else:
-            self.classes += 'restricted by_%s' % self.restricted
-
         if self.restrictor == 'None':
             self.classes += ''
         else:
-            self.classes += 'restrictor for_%s' % self.restrictor
+            self.classes += '%s restrictor for_%s' % (self.linktable, self.restrictor)
 
         #URL to reload widget via ajax
         self.comp_url = URL('plugin_ajaxselect', 'set_widget.load', args=[self.tablename, self.fieldname, self.value, self.linktable, self.wrappername])

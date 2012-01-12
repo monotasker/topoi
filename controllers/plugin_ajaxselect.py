@@ -25,16 +25,21 @@ def set_widget():
     if len(request.args) > 5:
         #get the value from the restricting select box to use in filtering this one
         filter_val = request.args[5]
+        #find the table behind the constraining widget
+        filter_t = request.args[6]
         #find the corresponding field in this select's linked table
-        cf = [f for f in the_linktable.fields if the_linktable[f].type == 'reference authors'][0]
-        print(cf)
+        ref = 'reference %s' % filter_t
+        cf = [f for f in the_linktable.fields if the_linktable[f].type == ref][0]
         #filter the rows from the linked table accordingly
         rows = db(the_linktable[cf] == filter_val).select()
+        #get the field name to represent values in the new select widget
+        rep = the_linktable.fields[1]
         #build the name for the refreshed select widget
         n = table + '_' + field
         #create the widget with filtered options
-        w = SELECT(_name=n, *[OPTION(e['title'], _value=e.id) for e in rows])
+        w = SELECT(_name=n, *[OPTION(e[rep], _value=e.id) for e in rows])
     else:
+        #refresh using ordinary widget if no filter constraints
         w = OptionsWidget.widget(the_field, value)
 
     return dict(widget = w, linktable = linktable)
