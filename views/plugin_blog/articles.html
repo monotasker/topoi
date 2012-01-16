@@ -5,4 +5,13 @@
 {{=H2(a.title, _class='article_title')}}
 {{=SPAN(created, _class='date_created')}}
 {{=DIV(XML(a.body), _class='article_wrapper')}}
+{{=plugin_comments()}}
 </article>
+
+{{block right_sidebar}}
+<p>{{include 'plugin_blog/right_sidebar.html'}}</p>
+{{end}}
+
+{{block left_sidebar}}
+{{include 'plugin_blog/left_sidebar.html'}}
+{{end}}

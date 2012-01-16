@@ -1,19 +1,22 @@
 {{left_sidebar_enabled=right_sidebar_enabled=False}}
 {{extend 'layout.html'}}
 
+<article>
+
 {{if 'message' in globals():}}
 <h1>{{=message}}</h1>
 {{pass}}
 
-<table>
-{{for p in projectlist:}}
-{{=p}}
-{{pass}}
-</table>
+<ul>
+    {{for p in projectlist:}}
+    {{=LI(p)}}
+    {{pass}}
+    <li>
+        <a href="{{=URL('notes')}}">Dynamic grid of all notes</a>
+    </li>
+</ul>
 
-<li>
-<ul><a href="{{=URL('notes')}}">Dynamic grid of all notes</a></ul>
-</li>
+</article>
 
 {{block left_sidebar}}New Left Sidebar Content{{end}}
 {{block right_sidebar}}New Right Sidebar Content{{end}}

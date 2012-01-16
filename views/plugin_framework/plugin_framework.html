@@ -92,9 +92,7 @@
             </nav>
 
             {{try:}}
-                {{navbar = auth.navbar(action=URL('default','user'))}}
-                {{del navbar[0], navbar[-1]}}
-                {{=navbar}}
+                {{='auth' in globals() and auth.navbar(separators=('',' ',''))}}
             {{except:}}
                 {{pass}}
             {{pass}}

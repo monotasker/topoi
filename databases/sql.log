@@ -146,3 +146,11 @@ timestamp: 2012-01-04T18:31:31.290273
 ALTER TABLE auth_cas ADD renew CHAR(1);
 timestamp: 2012-01-04T18:31:31.378621
 ALTER TABLE auth_cas ADD ticket CHAR(512);
+timestamp: 2012-01-12T21:13:59.744341
+CREATE TABLE plugin_comments_comment(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    body TEXT,
+    posted_on TIMESTAMP,
+    posted_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
