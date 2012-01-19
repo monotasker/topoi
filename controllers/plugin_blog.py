@@ -9,6 +9,7 @@ def articles():
     created = a.created.strftime('%B %e, %Y')
     return dict(a = a, created = created)
 
+@auth
 def new_post():
     form = crud.create(db.articles)
     return dict(form = form)
