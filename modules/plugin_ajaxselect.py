@@ -108,16 +108,16 @@ class AjaxSelect:
 
     def create_wrapper(self):
         #create the span wrapper and place the select widget inside, along with buttons to add and refresh if necessary
-        s = SPAN(self.w, _id=self.wrappername, _class = self.classes)
+        span = SPAN(self.w, _id=self.wrappername, _class = self.classes)
         refresher = A('refresh', _href=self.comp_url, _id=self.refresher_id, cid=self.wrappername)
-        f = '%s_adder_form' % self.linktable
-        adder = A('add new', _href=self.add_url, _id=self.adder_id, _class='add_trigger', cid=f)
-        dialog = DIV('', _id=f)
+        form_name= '%s_adder_form' % self.linktable
+        adder = A('add new', _href=self.add_url, _id=self.adder_id, _class='add_trigger', cid=form_name)
+        dialog = DIV('', _id=form_name)
 
         if not self.refresher:
-            self.wrapper = s, adder, dialog
+            self.wrapper = span, adder, dialog
         else:
-            self.wrapper = s, refresher, adder, dialog
+            self.wrapper = span, refresher, adder, dialog
 
     def widget(self):
         """
