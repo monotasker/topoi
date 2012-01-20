@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5396531b-ac2b-4905-9550-948d5d2a7063" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/plugin_comments.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/plugin_comments.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/plugin_comments/post.load" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_auth_cas.table" afterPath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_auth_cas.table" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_notes.table" afterPath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_notes.table" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/storage.sqlite" afterPath="$PROJECT_DIR$/databases/storage.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sessions/127.0.0.1-fc4419f0-f171-4460-81f1-9a3fd7a75e2c" afterPath="$PROJECT_DIR$/sessions/127.0.0.1-fc4419f0-f171-4460-81f1-9a3fd7a75e2c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/sql.log" afterPath="$PROJECT_DIR$/databases/sql.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/plugin_framework/framework.less" afterPath="$PROJECT_DIR$/static/plugin_framework/framework.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/plugin_framework/theme.less" afterPath="$PROJECT_DIR$/static/plugin_framework/theme.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/index.html" afterPath="$PROJECT_DIR$/views/default/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/plugin_blog/articles.html" afterPath="$PROJECT_DIR$/views/plugin_blog/articles.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/plugin_blog/right_sidebar.html" afterPath="$PROJECT_DIR$/views/plugin_blog/right_sidebar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/plugin_framework/plugin_framework.html" afterPath="$PROJECT_DIR$/views/plugin_framework/plugin_framework.html" />
     </list>
     <ignored path="topoi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,10 +61,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="theme.less" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="theme.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/plugin_framework/theme.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="284" column="25" selection-start="6190" selection-end="6190" vertical-scroll-proportion="6.1049285">
+            <state line="284" column="25" selection-start="6190" selection-end="6190" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -86,7 +82,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/default/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="307" selection-end="307" vertical-scroll-proportion="-13.16129">
+            <state line="17" column="0" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -104,7 +100,7 @@
       <file leaf-file-name="plugin_framework.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/plugin_framework/plugin_framework.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="0" selection-start="4947" selection-end="4947" vertical-scroll-proportion="1.3548387">
+            <state line="97" column="20" selection-start="4732" selection-end="4732" vertical-scroll-proportion="6.193548">
               <folding />
             </state>
           </provider>
@@ -142,14 +138,15 @@
         <option value="$PROJECT_DIR$/views/default/index.html" />
         <option value="$PROJECT_DIR$/static/plugin_framework/framework.less" />
         <option value="$PROJECT_DIR$/static/plugin_framework/theme.less" />
+        <option value="$PROJECT_DIR$/test" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
+    <option name="x" value="-8" />
     <option name="y" value="-10" />
-    <option name="width" value="1368" />
-    <option name="height" value="779" />
+    <option name="width" value="1382" />
+    <option name="height" value="786" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -281,10 +278,10 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="editor.preferences.tabs" />
+    <property name="options.lastSelected" value="editor.preferences.smartKeys" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.splitter.details.proportions" value="0.33418694" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.33418694" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -348,6 +345,13 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -378,14 +382,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-10" width="1368" height="779" extended-state="6" />
+    <frame x="-8" y="-10" width="1382" height="786" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31121644" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20597243" sideWeight="0.6729858" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21056661" sideWeight="0.6729858" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328594" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -454,11 +458,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/generic.rss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/plugin_blog.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="16" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0" />
@@ -479,11 +478,34 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/plugin_blog/front.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="7" selection-start="332" selection-end="499" vertical-scroll-proportion="0.04255319" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/plugin_blog/articles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="265" selection-end="265" vertical-scroll-proportion="0.04255319" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/plugin_comments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="517" selection-end="517" vertical-scroll-proportion="0.45786965" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/plugin_ajaxselect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="2406" selection-end="2406" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/plugin_comments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/plugin_blog/right_sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="32" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="2" column="32" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/plugin_blog/new_post.html">
@@ -491,65 +513,35 @@
         <state line="2" column="9" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/plugin_blog/front.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="7" selection-start="332" selection-end="499" vertical-scroll-proportion="0.04255319">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/plugin_ajaxselect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="2406" selection-end="2406" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/plugin_blog/articles.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="265" selection-end="265" vertical-scroll-proportion="0.04255319">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/plugin_comments.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="517" selection-end="517" vertical-scroll-proportion="0.45786965">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/plugin_comments.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/default/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="307" selection-end="307" vertical-scroll-proportion="-13.16129">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/plugin_framework/plugin_framework.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="0" selection-start="4947" selection-end="4947" vertical-scroll-proportion="1.3548387">
+        <state line="17" column="0" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/plugin_framework/framework.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="255" column="22" selection-start="3930" selection-end="3930" vertical-scroll-proportion="0.0">
+        <state line="255" column="22" selection-start="3930" selection-end="3930" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/plugin_framework/plugin_framework.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="20" selection-start="4732" selection-end="4732" vertical-scroll-proportion="6.193548">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/plugin_framework/theme.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="284" column="25" selection-start="6190" selection-end="6190" vertical-scroll-proportion="6.1049285">
+        <state line="284" column="25" selection-start="6190" selection-end="6190" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
