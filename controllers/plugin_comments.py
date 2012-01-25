@@ -1,10 +1,9 @@
+# coding: utf8
 if 0:
-    #from gluon import current, SQLFORM, redirect, A, URL
-    from gluon.tools import Auth, Crud
-    from gluon.dal import DAL
-    db = DAL()
-    auth = Auth()
-    crud = Crud()
+    from gluon import current
+    from gluon.tools import Crud
+    db, auth = current.db, current.auth
+    crud = Crud(db)
 
 @auth.requires_login()
 def post():

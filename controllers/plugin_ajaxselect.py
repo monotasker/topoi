@@ -37,7 +37,7 @@ def set_widget():
         #build the name for the refreshed select widget
         n = table + '_' + field
         #create the widget with filtered options
-        w = SELECT(_name=n, *[OPTION(e[rep], _value=e.id) for e in rows])
+        w = SELECT(_id=n, _class='generic-widget', _name=field, *[OPTION(e[rep], _value=e.id) for e in rows])
     else:
         #refresh using ordinary widget if no filter constraints
         w = OptionsWidget.widget(the_field, value)

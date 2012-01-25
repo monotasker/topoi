@@ -1,9 +1,9 @@
 <div>
 <h2>Office Hours</h2>
 <ul>
-    <li>T 1:00-2:30 pm</li>
-    <li>W 10:00 am-12:00 noon</li>
-    <li>Th</li>
+    <li>T 1 - 2:30 pm</li>
+    <li>W 10:30 am - 12 noon</li>
+    <li>Th 11 am - 12 noon</li>
 </ul>
 </div>
 
@@ -22,11 +22,20 @@
 <div>
 <h2>My Sites</h2>
 <ul>
-    <li><a href=""></a>Places</li>
-    <li><a href=""></a>Paideia</li>
-    <li><a href="http://">Witnesses of Hope</a> </li>
-    <li><a href="">Missio Dei</a> </li>
-    <li><a href="">The Online Critical Pseudepigrapha</a> </li>
+    <li><a href="https://places.fluxflex.com">Places</a></li>
+    <li><a href="https://paideia.fluxflex.com">Paideia</a></li>
+    <li><a href="http://www.tyndale.ca/~iscott/Witnesses/">Witnesses of Hope</a> </li>
+    <li><a href="http://www.tyndale.ca/~missiodei">Missio Dei</a> </li>
+    <li><a href="http://ocp.tyndale.ca">The Online Critical Pseudepigrapha</a> </li>
     <li><a href="">on Github</a> </li>
 </ul>
 </div>
+
+<script>
+    $('#left_sidebar div, #right_sidebar div').live('click', function(){
+        $('#left_sidebar ul, #right_sidebar ul').each(function(){
+            $(this).hide('slow');
+        });
+        $(this).find('ul').slideToggle();
+    });
+</script>

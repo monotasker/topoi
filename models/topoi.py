@@ -48,11 +48,12 @@ db.define_table('notes',
     Field('excerpt', 'text'),
     Field('body', 'text'),
     Field('tags', 'list:reference db.tags'),
-    Field('last_edited', 'datetime', default=datetime.datetime.utcnow()),
-    Field('created', 'datetime', default=datetime.datetime.utcnow()),
+    Field('last_edited', 'datetime', default=datetime.datetime.utcnow(), writable=False),
+    Field('created', 'datetime', default=datetime.datetime.utcnow(), writable=False),
     Field('project', db.projects),
     format='%(author)s, %(work)s, %(reference)s')
 db.notes.author.widget = lambda field, value: AjaxSelect(field, value, 'authors', restrictor='work').widget()
 db.notes.work.widget = lambda field, value: AjaxSelect(field, value, 'works').widget()
 db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, multiple = True)
+db.notes.project.requires = IS_IN_DB(db, 'projects.id', db.projects._format, multiple = False)
 #db.notes.tags.widget = lambda field, value: multi_add_option.widget(field, value, 'tags')
