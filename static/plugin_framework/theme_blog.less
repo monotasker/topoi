@@ -332,14 +332,24 @@ nav {
 
 }
 
-#viewpane:before {
-    content:' ';
-    .tapered-shadow;
-
+#viewpane {
     form {
         padding:0;
         margin:0;
+
+        input[type=text], select {
+            height:@lineheight2;
+            lineheight:@lineheight2;
+        }
+        select {
+            width:300px;
+            max-width:300px;
+        }
+        #notes_tags select {
+            width:460px;
+        }
     }
+
 }
 
 footer {

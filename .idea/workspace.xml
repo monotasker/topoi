@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5396531b-ac2b-4905-9550-948d5d2a7063" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_auth_cas.table" afterPath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_auth_cas.table" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sessions/127.0.0.1-36a47132-9f63-403c-93e8-4b961484278b" afterPath="$PROJECT_DIR$/sessions/127.0.0.1-36a47132-9f63-403c-93e8-4b961484278b" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/topoi.py" afterPath="$PROJECT_DIR$/models/topoi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/plugin_ajaxselect.py" afterPath="$PROJECT_DIR$/modules/plugin_ajaxselect.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/plugin_framework/theme_blog.less" afterPath="$PROJECT_DIR$/static/plugin_framework/theme_blog.less" />
     </list>
     <ignored path="topoi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,13 +62,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topoi.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="topoi.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/topoi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="105" selection-start="2039" selection-end="2039" vertical-scroll-proportion="0.6686838">
+            <state line="54" column="112" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#15#93#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="theme_blog.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/plugin_framework/theme_blog.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="349" column="8" selection-start="7352" selection-end="7352" vertical-scroll-proportion="0.79425114">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -166,7 +173,6 @@
         <option value="$PROJECT_DIR$/controllers/plugin_blog.py" />
         <option value="$PROJECT_DIR$/controllers/plugin_comments.py" />
         <option value="$PROJECT_DIR$/controllers/default.py" />
-        <option value="$PROJECT_DIR$/static/plugin_framework/theme_blog.less" />
         <option value="$PROJECT_DIR$/controllers/plugin_ajaxselect.py" />
         <option value="$PROJECT_DIR$/views/plugin_listandedit/list.load" />
         <option value="$PROJECT_DIR$/views/plugin_listandedit/list.html" />
@@ -174,6 +180,7 @@
         <option value="$PROJECT_DIR$/static/plugin_listandedit/plugin_listandedit.js" />
         <option value="$PROJECT_DIR$/modules/plugin_ajaxselect.py" />
         <option value="$PROJECT_DIR$/models/topoi.py" />
+        <option value="$PROJECT_DIR$/static/plugin_framework/theme_blog.less" />
       </list>
     </option>
   </component>
@@ -238,7 +245,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="topoi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="topoi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin_framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -429,11 +454,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/plugin_framework/theme_blog.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="32" selection-start="6299" selection-end="6299" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/default/edit.load">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="31" selection-start="62" selection-end="62" vertical-scroll-proportion="0.048076924" />
@@ -514,10 +534,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/topoi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="105" selection-start="2039" selection-end="2039" vertical-scroll-proportion="0.6686838">
+        <state line="54" column="112" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#15#93#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/plugin_framework/theme_blog.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="349" column="8" selection-start="7352" selection-end="7352" vertical-scroll-proportion="0.79425114">
+          <folding />
         </state>
       </provider>
     </entry>
