@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5396531b-ac2b-4905-9550-948d5d2a7063" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/storage.sqlite" afterPath="$PROJECT_DIR$/databases/storage.sqlite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sessions/127.0.0.1-36a47132-9f63-403c-93e8-4b961484278b" afterPath="$PROJECT_DIR$/sessions/127.0.0.1-36a47132-9f63-403c-93e8-4b961484278b" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/plugin_framework/theme_blog.less" afterPath="$PROJECT_DIR$/static/plugin_framework/theme_blog.less" />
@@ -66,9 +67,7 @@
         <entry file="file://$PROJECT_DIR$/models/topoi.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="54" column="112" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#15#93#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,7 +75,7 @@
       <file leaf-file-name="theme_blog.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/plugin_framework/theme_blog.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="349" column="8" selection-start="7352" selection-end="7352" vertical-scroll-proportion="0.79425114">
+            <state line="342" column="9" selection-start="7208" selection-end="7208" vertical-scroll-proportion="0.20574887">
               <folding />
             </state>
           </provider>
@@ -140,9 +139,7 @@
         <entry file="file://$PROJECT_DIR$/modules/plugin_ajaxselect.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="118" column="34" selection-start="5541" selection-end="5541" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -276,8 +273,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.splitter.details.proportions" value="0.33418694" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.33418694" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -489,21 +486,14 @@
         <state line="37" column="11" selection-start="1079" selection-end="1079" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/plugin_listandedit/list.html">
+    <entry file="file://$PROJECT_DIR$/models/topoi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" />
+        <state line="54" column="112" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/plugin_listandedit/list.load">
+    <entry file="file://$PROJECT_DIR$/modules/plugin_multiselect_widget.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/plugin_listandedit/plugin_listandedit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="21" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="33" column="21" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/plugin_listandedit.py">
@@ -511,39 +501,34 @@
         <state line="67" column="74" selection-start="3171" selection-end="3171" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/plugin_listandedit/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/plugin_listandedit/plugin_listandedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="21" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/plugin_listandedit/list.load">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/plugin_ajaxselect.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="31" selection-start="2933" selection-end="2933" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/plugin_multiselect_widget.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="21" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/plugin_ajaxselect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="34" selection-start="5541" selection-end="5541" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/topoi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="112" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#15#93#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="118" column="34" selection-start="5541" selection-end="5541" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/plugin_framework/theme_blog.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="349" column="8" selection-start="7352" selection-end="7352" vertical-scroll-proportion="0.79425114">
+        <state line="342" column="9" selection-start="7208" selection-end="7208" vertical-scroll-proportion="0.20574887">
           <folding />
         </state>
       </provider>
