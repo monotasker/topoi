@@ -1,10 +1,7 @@
 # coding: utf8
-from plugin_selectoradd import SelectOrAddOption, MULTISELECT_OR_ADD_OPTION
 from plugin_multiselect_widget import hmultiselect_widget, vmultiselect_widget
 from plugin_ajaxselect import AjaxSelect
 import datetime
-
-multi_add_option = MULTISELECT_OR_ADD_OPTION(form_title="Add new", controller="plugin_selectoradd", function="add", button_text = "Add New", dialog_width=500)
 
 db.define_table('locations',
     Field('location', 'string'),
@@ -55,5 +52,5 @@ db.define_table('notes',
 db.notes.author.widget = lambda field, value: AjaxSelect(field, value, 'authors', restrictor='work').widget()
 db.notes.work.widget = lambda field, value: AjaxSelect(field, value, 'works').widget()
 db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, multiple = True)
+db.notes.tags.widget = lambda field, value: AjaxSelect(field, value, 'tags', multi = 'h', refresher=True).widget()
 db.notes.project.requires = IS_IN_DB(db, 'projects.id', db.projects._format, multiple = False)
-#db.notes.tags.widget = lambda field, value: multi_add_option.widget(field, value, 'tags')
