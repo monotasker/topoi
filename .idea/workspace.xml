@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5396531b-ac2b-4905-9550-948d5d2a7063" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/storage.sqlite" afterPath="$PROJECT_DIR$/databases/storage.sqlite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sessions/127.0.0.1-36a47132-9f63-403c-93e8-4b961484278b" afterPath="$PROJECT_DIR$/sessions/127.0.0.1-36a47132-9f63-403c-93e8-4b961484278b" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/plugin_framework/theme_blog.less" afterPath="$PROJECT_DIR$/static/plugin_framework/theme_blog.less" />
     </list>
     <ignored path="topoi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,55 +25,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="plugin_comments.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/plugin_comments.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="plugin_blog.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/plugin_blog.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="right_sidebar.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/plugin_blog/right_sidebar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="19" selection-start="707" selection-end="707" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="left_sidebar.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/plugin_blog/left_sidebar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="11" selection-start="1079" selection-end="1079" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="topoi.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/topoi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="112" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0">
+            <state line="56" column="0" selection-start="2144" selection-end="2144" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="theme_blog.less" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/plugin_framework/theme_blog.less">
+      <file leaf-file-name="layout.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="342" column="9" selection-start="7208" selection-end="7208" vertical-scroll-proportion="0.20574887">
+            <state line="1" column="11" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0547504">
               <folding />
             </state>
           </provider>
@@ -182,10 +144,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
     <option name="y" value="-10" />
-    <option name="width" value="1368" />
-    <option name="height" value="779" />
+    <option name="width" value="1366" />
+    <option name="height" value="778" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -213,7 +174,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -242,30 +202,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="topoi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="topoi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugin_framework" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -375,7 +318,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-10" width="1368" height="779" extended-state="6" />
+    <frame x="0" y="-10" width="1366" height="778" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -451,11 +394,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/default/edit.load">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="31" selection-start="62" selection-end="62" vertical-scroll-proportion="0.048076924" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/default/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="14" selection-start="202" selection-end="202" vertical-scroll-proportion="0.048076924" />
@@ -484,11 +422,6 @@
     <entry file="file://$PROJECT_DIR$/views/plugin_blog/left_sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="11" selection-start="1079" selection-end="1079" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/topoi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="112" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/plugin_multiselect_widget.py">
@@ -528,7 +461,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/plugin_framework/theme_blog.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="342" column="9" selection-start="7208" selection-end="7208" vertical-scroll-proportion="0.20574887">
+        <state line="349" column="25" selection-start="7369" selection-end="7369" vertical-scroll-proportion="0.25718608">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/topoi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="0" selection-start="2144" selection-end="2144" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="11" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0547504">
           <folding />
         </state>
       </provider>
