@@ -2,6 +2,10 @@
 from plugin_multiselect_widget import hmultiselect_widget, vmultiselect_widget
 from plugin_ajaxselect import AjaxSelect
 import datetime
+from gluon import current
+current.db = db
+response.files.append(URL('static', 'plugin_ajaxselect/plugin_ajaxselect.css'))
+response.files.append(URL('static', 'plugin_ajaxselect/plugin_ajaxselect.js'))
 
 db.define_table('locations',
     Field('location', 'string'),
@@ -12,7 +16,7 @@ db.define_table('authors',
     Field('location', db.locations),
     Field('lived', 'string'),
     format='%(name)s')
-db.authors.location.widget = lambda field, value: AjaxSelect(field, value, 'locations').widget()
+db.authors.location.widget = lambda field, value: AjaxSelect(field, value).widget()
 
 db.define_table('works',
     Field('title', 'string'),
@@ -49,8 +53,13 @@ db.define_table('notes',
     Field('created', 'datetime', default=datetime.datetime.utcnow(), writable=False),
     Field('project', db.projects),
     format='%(author)s, %(work)s, %(reference)s')
-db.notes.author.widget = lambda field, value: AjaxSelect(field, value, 'authors', restrictor='work').widget()
-db.notes.work.widget = lambda field, value: AjaxSelect(field, value, 'works').widget()
+db.notes.author.widget = lambda field, value: AjaxSelect(field, value, 
+                                                    refresher = True, 
+                                                    restrictor='work').widget()
+db.notes.work.widget = lambda field, value: AjaxSelect(field, value).filtered_widget('author')
 db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, multiple = True)
-db.notes.tags.widget = lambda field, value: AjaxSelect(field, value, 'tags', multi = 'h', refresher=True).widget()
+db.notes.tags.widget = lambda field, value: AjaxSelect(field, value, 
+                                                    multi = 'basic', 
+                                                    refresher=True,
+                                                    lister = 'editlinks').widget()
 db.notes.project.requires = IS_IN_DB(db, 'projects.id', db.projects._format, multiple = False)

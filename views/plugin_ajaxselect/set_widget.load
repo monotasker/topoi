@@ -1,1 +1,4 @@
-{{=widget}}
+{{for w in wrapper:}}
+    {{=w}}
+{{pass}}
+
