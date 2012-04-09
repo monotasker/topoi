@@ -1,4 +1,0 @@
-{{for w in wrapper:}}
-    {{=w}}
-{{pass}}
-
