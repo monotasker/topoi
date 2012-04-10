@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"res",
+				"restrictor	(local, instance)"
+			],
+			[
+				"refre",
+				"refresher_id"
+			],
+			[
+				"restr",
+				"restricted"
+			],
+			[
+				"clean",
+				"clean_val"
+			],
+			[
+				"list",
+				"lister"
+			],
+			[
+				"restri",
+				"restrictor"
+			],
+			[
+				"rest",
+				"restricted"
+			],
+			[
+				"refresh",
+				"refresher"
+			],
+			[
+				"field",
+				"fieldset	(local, instance)"
+			],
+			[
+				"wra",
+				"wrappername	(local, instance)"
+			],
+			[
+				"hid",
+				"hidden_ajax_field	(attribute, function)"
+			],
+			[
+				"wrapp",
+				"wrappername"
+			],
+			[
 				"tag",
 				"tag_records"
 			],
@@ -82,10 +130,6 @@
 			[
 				"form",
 				"formname"
-			],
-			[
-				"list",
-				"plugin_listandedit"
 			],
 			[
 				"init",
@@ -220,10 +264,6 @@
 				"selected"
 			],
 			[
-				"wra",
-				"wrappername"
-			],
-			[
 				"fields",
 				"fieldset"
 			],
@@ -243,7 +283,23 @@
 			"file": "models/topoi.py",
 			"settings":
 			{
-				"buffer_size": 2869,
+				"buffer_size": 2975,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "modules/plugin_ajaxselect.py",
+			"settings":
+			{
+				"buffer_size": 16480,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/plugin_ajaxselect.py",
+			"settings":
+			{
+				"buffer_size": 4778,
 				"line_ending": "Unix"
 			}
 		}
@@ -316,6 +372,7 @@
 	},
 	"file_history":
 	[
+		"/home/ian/web/web2py/applications/topoi/models/db.py",
 		"/home/ian/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
 		"/home/ian/web/web2py/gluon/contrib/test_helpers.py",
 		"/home/ian/web/web2py/applications/paideia/static/plugin_ajaxselect/plugin_ajaxselect.css",
@@ -378,6 +435,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"classes",
 			"current",
 			"package",
 			"editlis",
@@ -404,7 +462,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -412,15 +470,15 @@
 					"file": "models/topoi.py",
 					"settings":
 					{
-						"buffer_size": 2869,
+						"buffer_size": 2975,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1758,
-								1758
+								293,
+								293
 							]
 						],
 						"settings":
@@ -430,7 +488,63 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 896.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "modules/plugin_ajaxselect.py",
+					"settings":
+					{
+						"buffer_size": 16480,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8353,
+								8353
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5098.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "controllers/plugin_ajaxselect.py",
+					"settings":
+					{
+						"buffer_size": 4778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1222,
+								1222
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 330.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -490,7 +604,7 @@
 		],
 		"width": 0.0
 	},
-	"show_minimap": false,
+	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,

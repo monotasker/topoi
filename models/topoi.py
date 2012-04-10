@@ -15,7 +15,8 @@ db.define_table('authors',
     Field('location', db.locations),
     Field('lived', 'string'),
     format='%(name)s')
-db.authors.location.widget = lambda field, value: AjaxSelect(field, value).widget()
+db.authors.location.widget = lambda field, value: AjaxSelect().widget(
+                                                        field, value)
 
 db.define_table('works',
     Field('title', 'string'),
@@ -54,19 +55,20 @@ db.define_table('notes',
             writable=False),
     Field('project', db.projects),
     format='%(author)s, %(work)s, %(reference)s')
-db.notes.author.widget = lambda field, value: AjaxSelect(field, value, 
+db.notes.author.widget = lambda field, value: AjaxSelect().widget(
+                                                field, value, 
                                                 refresher=True, 
-                                                restrictor='work').widget()
-db.notes.work.widget = lambda field, value: FilteredAjaxSelect(field, value,
+                                                restrictor='work')
+db.notes.work.widget = lambda field, value: FilteredAjaxSelect().widget(
+                                                field, value,
                                                 refresher=True, 
-                                                restricted='author'
-                                                ).widget()
+                                                restricted='author')
 db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, 
                                     multiple = True)
-db.notes.tags.widget = lambda field, value: AjaxSelect(field, value, 
+db.notes.tags.widget = lambda field, value: AjaxSelect().widget(
+                                                field, value, 
                                                 multi='basic', 
                                                 refresher=True,
-                                                lister='editlinks'
-                                                ).widget()
+                                                lister='editlinks')
 db.notes.project.requires = IS_IN_DB(db, 'projects.id', db.projects._format, 
                                         multiple=False)
