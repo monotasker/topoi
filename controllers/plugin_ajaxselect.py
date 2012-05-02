@@ -1,15 +1,21 @@
 from plugin_ajaxselect import AjaxSelect, FilteredAjaxSelect
+if 0:
+    from gluon import current, dal
+    request, session = current.request, current.session
+    db = dal.DAL()
 
 def set_widget():
     """
     creates a replacement select widget using the AjaxSelect or 
     FilteredAjaxSelect classes and returns the new widget via ajax.
     """
-
+    print '========================================'
+    print 'starting controller set_widget()'
     #get variables to build widget for the proper field
     #TODO: Can I get the table from db[field]._table or something like that?
     tablename = request.args[0]
     fieldname = request.args[1]
+    print 'for widget: ||', tablename, '|', fieldname, '||'
     table = db[tablename]
     field = table[fieldname]
     requires = field.requires
@@ -19,11 +25,16 @@ def set_widget():
         requires = requires
 
     linktable = requires[0].ktable
+    print 'linked to table |', linktable, '|' 
 
     #get current value of widget
     valstring = request.vars['value']
     #restore value to list since it was converted to string for url
     value = valstring.split('-')
+    if 'rval' in request.vars:
+        rval = request.vars['rval']
+    else:
+        rval = None
 
     if request.vars['restricted'] in (None, 'None'):
         w = AjaxSelect().widget(field, value,  
@@ -40,7 +51,8 @@ def set_widget():
             restricted = request.vars['restricted'], 
             restrictor = request.vars['restrictor'], 
             multi = request.vars['multi'], 
-            lister = request.vars['lister'])        
+            lister = request.vars['lister'],
+            rval = rval)        
                 
     return dict(wrapper = w, linktable = linktable, tablename = tablename)
 
@@ -59,7 +71,7 @@ def setval():
     curval = str(curval).split(',')
     print 'insetval() processed: ', curval
     session[wrappername] = curval
-    print 'in setval(), session.wrappername = ', session[wrappername]
+    print 'in setval(), session[', wrappername, ' = ', session[wrappername]
 
 def set_form_wrapper():
     """
@@ -112,7 +124,6 @@ def linked_edit_form():
 
     return dict(form = form)
     
-
 def linked_create_form():
     """
     creates a form to insert a new entry into the linked table which populates

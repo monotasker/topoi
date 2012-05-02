@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # this file is released under public domain and you can use without limitations
 
-if request.is_local: #disable in production enviroment
-    from gluon.custom_import import track_changes
-    track_changes(True)
+#if request.is_local: #disable in production enviroment
+from gluon.custom_import import track_changes
+track_changes(True)
 
 #########################################################################
 ## This scaffolding model makes your app work on Google App Engine too

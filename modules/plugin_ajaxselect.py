@@ -1,7 +1,6 @@
-from gluon import current, SPAN, A, DIV, SQLFORM, INPUT, UL, LI, OPTION, SELECT
+from gluon import current, SPAN, A, DIV, INPUT, UL, LI, OPTION, SELECT
 from gluon.html import URL
 from gluon.sqlhtml import OptionsWidget, MultipleOptionsWidget 
-import pprint
 #TODO: add ListWidget as another option?
 
 class AjaxSelect(object):
@@ -76,17 +75,24 @@ class AjaxSelect(object):
     fields"""
 
     def __init__(self):
-        print '\n starting modules/plugin_ajaxselect __init__'
+        print '------------------------------------------------'
+        print '------------------------------------------------'
+        print 'starting modules/plugin_ajaxselect __init__'
         
     def widget(self, field, value, restricted=None, refresher=False, 
-                adder=True, restrictor=None, multi=False, lister=False):
+                adder=True, restrictor=None, multi=False, lister=False, rval=None):
         """
         Main method to create the ajaxselect widget. Calls helper methods 
-        and returns the wrapper element containing all associated elements. 
+        and returns the wrapper element containing all associated elements 
         """
         session, request = current.session, current.request
 
-        print '\nstarting AjaxSelect.widget()'
+        print '-------------------------------------------------'
+        print 'starting AjaxSelect.widget()'
+        if multi == 'False':
+            multi = False
+        elif multi == 'True':
+            multi = True
         print multi, type(multi)
         #assemble information first
         fieldset = str(field).split('.')
@@ -108,15 +114,15 @@ class AjaxSelect(object):
                     _class = self.classes(linktable, restricted, 
                                         restrictor, lister))
         wrapper.append(self.create_widget(field, value, clean_val, 
-                                        multi, restricted))
+                                        multi, restricted, rval))
         wrapper.append(self.hidden_ajax_field(wrappername))
         wrapper.append(self.refresher(wrappername, linktable, uargs, uvars))
         wrapper.append(self.adder(wrappername, linktable, 
                                 uargs, uvars, form_name))
         wrapper.append(self.dialog(form_name))
-        if multi and multi != 'False' and lister == 'simple':
+        if multi and lister == 'simple':
             wrapper.append(self.taglist(value, linktable))
-        elif multi and multi != 'False' and lister == 'editlinks':
+        elif multi and lister == 'editlinks':
             wrapper.append(self.linklist(value, linktable, uargs, uvars))
         else:
             print 'did not request list of tags'
@@ -183,12 +189,12 @@ class AjaxSelect(object):
 
         return None
 
-    def create_widget(self, field, value, clean_val, multi, restricted):       
+    def create_widget(self, field, value, clean_val, multi, restricted, rval):       
         """
         create either a single select widget or multiselect widget
         """
 
-        print '\nstarting create_widget()'
+        print 'starting create_widget()'
         if multi and multi != 'False':
             w = MultipleOptionsWidget.widget(field, value)
         else:
@@ -252,7 +258,8 @@ class AjaxSelect(object):
     def taglist(self, value, linktable):
         """Build a list of selected widget options to be displayed as a 
         list of 'tags' below the widget."""
-        print '\n starting models/plugin_ajaxselect add_tags'
+        print '----------------------------------------------' 
+        print 'starting models/plugin_ajaxselect add_tags'
 
         db = current.db
 
@@ -267,7 +274,8 @@ class AjaxSelect(object):
     def linklist(self, value, linktable, uargs, uvars):
         """Build a list of selected widget options to be displayed as a 
         list of 'tags' below the widget."""
-        print '\n starting models/plugin_ajaxselect add_tags'
+        print '----------------------------------------------'
+        print 'starting models/plugin_ajaxselect add_tags'
 
         db = current.db
         form_name = '%s_editlist_form' % linktable
@@ -328,14 +336,16 @@ class FilteredAjaxSelect(AjaxSelect):
 
         return restricted
 
-    def create_widget(self, field, value, clean_val, multi, restricted):       
-        
+    def create_widget(self, field, value, clean_val, multi, restricted, rval):       
         """create either a single select widget or multiselect widget"""
-        if multi and multi != 'False':
+
+        print '----------------------------------------------'
+        print 'starting FilteredAjaxSelect.create_widget()'
+        if multi:
             w = MultipleOptionsWidget.widget(field, value)
             #TODO: Create filtered multiple options widget class
         else:
-            w = FilteredOptionsWidget.widget(field, value, restricted)
+            w = FilteredOptionsWidget.widget(field, value, restricted, rval)
 
         return w
 
@@ -349,7 +359,7 @@ class FilteredOptionsWidget(OptionsWidget):
     """
 
     @classmethod
-    def widget(cls, field, value, restricted, **attributes):
+    def widget(cls, field, value, restricted, rval, **attributes):
         """
         generates a SELECT tag, including OPTIONs (only 1 option allowed)
 
@@ -366,6 +376,8 @@ class FilteredOptionsWidget(OptionsWidget):
         default = dict(value=value)
         attr = cls._attributes(field, default, **attributes)
 
+        print '----------------------------------------'
+        print 'starting FilteredOptionsWidget.widget()'
         # get raw list of options for this widget
         requires = field.requires
         if not isinstance(requires, (list, tuple)):
@@ -378,11 +390,19 @@ class FilteredOptionsWidget(OptionsWidget):
         
         # get the table referenced by this field
         linktable = requires[0].ktable
+        print 'getting options for table ', linktable
 
         # get the value of the restricting field
         table = field.table
         filter_field = table[restricted]
-        filter_val = db(field == value).select(filter_field).first()[filter_field] 
+        if rval:
+            filter_val = rval
+            print 'new restricting value is ', rval
+        else:
+            filter_row = db(field == value).select().first()
+            print 'restricting row is ', filter_row
+            filter_val = filter_row[filter_field] 
+            print 'new restricting value is ', filter_val 
         print 'filter_field', filter_field
         print 'filter_val', filter_val
 
