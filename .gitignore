@@ -1,2 +1,6 @@
+*.swp
+*.pyc
+*.tmp
+*.bak
 errors/*
 sessions/*
