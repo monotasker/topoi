@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 def index():
     """
     example action using the internationalization operator T and flash
@@ -8,10 +9,19 @@ def index():
     projects = db(db.projects).select()
     projectlist = []
     for p in projects:
-        i = TR(TD(A(p.projectname, _href=URL('plugin_listandedit', 'listing', args=['notes', p.id], vars={'fields':['author', 'work', 'reference']}))))
+        i = TR(TD(A(p.projectname,
+                        _href=URL('plugin_listandedit',
+                                    'listing',
+                                    args=['notes', p.id],
+                                    vars={'fields': ['author', 'work',
+                                                        'reference']}
+                                  )
+                )))
         projectlist.append(i)
 
-    return dict(message=T('Please choose a project'), projectlist = projectlist)
+    return dict(message=T('Please choose a project'),
+                   projectlist=projectlist)
+
 
 def user():
     """
@@ -30,14 +40,17 @@ def user():
     return dict(form=auth())
 
 
+'''
 def download():
     """
     allows downloading of uploaded files
     http://..../[app]/default/download/[filename]
     """
-    return response.download(request,db)
+    return response.download(request, db)
+'''
 
 
+'''
 def call():
     """
     exposes services. for example:
@@ -46,8 +59,10 @@ def call():
     supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
     """
     return service()
+'''
 
 
+'''
 @auth.requires_signature()
 def data():
     """
@@ -64,10 +79,11 @@ def data():
       LOAD('default','data.load',args='tables',ajax=True,user_signature=True)
     """
     return dict(form=crud())
+'''
+
 
 @auth.requires_login()
 def notes():
     form = SQLFORM.grid(db.notes)
 
     return dict(form=form)
-
