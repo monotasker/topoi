@@ -4,32 +4,32 @@ import ast, pprint
 def listing():
     """
     This plugin creates a large widget to display, edit, and add entries
-    to one database table.  
-    
+    to one database table.
+
     LIST FORMAT
-    By default the table rows are listed using either the "format" property 
+    By default the table rows are listed using either the "format" property
     of the table definition in the db model (if their is one), or the contents
     of the first table field (after the auto-generated id).
-    
-    ARGUMENTS 
-    Takes one required argument, the name of the table to be listed. 
-    
+
+    ARGUMENTS
+    Takes one required argument, the name of the table to be listed.
+
     VARIABLES
-    An optional variable "restrictor" can be used to filter the displayed 
-    records. This variable must be a dictionary in which the keys are the names 
-    of fields in the table and the values are the values to be allowed in those 
+    An optional variable "restrictor" can be used to filter the displayed
+    records. This variable must be a dictionary in which the keys are the names
+    of fields in the table and the values are the values to be allowed in those
     fields when generating the list.
     """
-    response.files.append(URL('static', 
+    response.files.append(URL('static',
             'plugin_listandedit/plugin_listandedit.css'))
-    response.files.append(URL('static', 
+    response.files.append(URL('static',
             'plugin_listandedit/plugin_listandedit.js'))
-    
+
     #get table to be listed
     tablename = request.args[0]
     #pass that name on to be used as a title for the widget
     rname = tablename
-    
+
     #get filtering values if any
     if 'restrictor' in request.vars:
         restr = request.vars['restrictor']
@@ -41,12 +41,12 @@ def listing():
 
     #check to make sure the required argument names a table in the db
     if not tablename in db.tables():
-        response.flash = '''Sorry, you are trying to list 
+        response.flash = '''Sorry, you are trying to list
         entries from a table that does not exist in the database.'''
     else:
         tb = db[tablename]
         #select all rows in the table
-        
+
         #filter that set based on any provided field-value pairs in request.vars.restrictor
         if restrictor:
             for k, v in restrictor.items():
@@ -55,13 +55,16 @@ def listing():
         else:
             rowlist = db(tb.id > 0).select()
 
-    # build html list from the selected rows 
+    # build html list from the selected rows
     listset = []
     for r in rowlist:
         fieldname = db[tablename].fields[1]
         # use format string from db table definition to list entries (if available)
         if db[tablename]._format:
-            listformat = db[tablename]._format % r
+            try:
+                listformat = db[tablename]._format % r
+            except:
+                listformat = db[tablename]._format(r)
         else:
             listformat = r[fieldname]
 

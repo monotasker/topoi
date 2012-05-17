@@ -1,10 +1,13 @@
 # coding: utf8
 from plugin_ajaxselect import AjaxSelect, FilteredAjaxSelect
 import datetime
+import string
 from gluon import current
 current.db = db
 response.files.append(URL('static', 'plugin_ajaxselect/plugin_ajaxselect.css'))
 response.files.append(URL('static', 'plugin_ajaxselect/plugin_ajaxselect.js'))
+
+spacer = ', '
 
 db.define_table('locations',
     Field('location', 'string'),
@@ -49,26 +52,26 @@ db.define_table('notes',
     Field('excerpt', 'text'),
     Field('body', 'text'),
     Field('tags', 'list:reference db.tags'),
-    Field('last_edited', 'datetime', default=datetime.datetime.utcnow(), 
+    Field('last_edited', 'datetime', default=datetime.datetime.utcnow(),
             writable=False),
-    Field('created', 'datetime', default=datetime.datetime.utcnow(), 
+    Field('created', 'datetime', default=datetime.datetime.utcnow(),
             writable=False),
     Field('project', db.projects),
-    format='%(author)s, %(work)s, %(reference)s')
+    format=lambda row: '%s, %s, %s' % (row.author.name, row.work.title, row.reference))
 db.notes.author.widget = lambda field, value: AjaxSelect().widget(
-                                                field, value, 
-                                                refresher=True, 
+                                                field, value,
+                                                refresher=True,
                                                 restrictor='work')
 db.notes.work.widget = lambda field, value: FilteredAjaxSelect().widget(
                                                 field, value,
-                                                refresher=True, 
+                                                refresher=True,
                                                 restricted='author')
-db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format, 
+db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format,
                                     multiple = True)
 db.notes.tags.widget = lambda field, value: AjaxSelect().widget(
-                                                field, value, 
-                                                multi='basic', 
+                                                field, value,
+                                                multi='basic',
                                                 refresher=True,
                                                 lister='editlinks')
-db.notes.project.requires = IS_IN_DB(db, 'projects.id', db.projects._format, 
+db.notes.project.requires = IS_IN_DB(db, 'projects.id', db.projects._format,
                                         multiple=False)
