@@ -1,10 +1,12 @@
-/* blog_theme */
-/* a sub-theme for the "framework" layout plugin for web2py */
-/* copyright Ian W. Scott, 2011 */
-/* licensed under GPL 3.0 as a free, open-source resource */
+@import "framework";
 
-@import "notebook_style";
-
+body {
+    background-color:@greye;
+    .linear-gradient(@greye,@greyd);
+    background-repeat: no-repeat;
+    z-index:1;
+    font-family: @fonts2;
+}
 
 header {
     position:relative;
@@ -29,13 +31,20 @@ header {
         color:#fff;
         display:block;
         .inset-text;
-        font-size:@typeheight;
-        font-family:Ubuntu;
-        text-transform: uppercase;
+        .blockletter-small;
         font-weight:normal;
         letter-spacing: 2px;
     }
 
+}
+
+.buttonlink() {
+    /* apply to any menu links (a elements) with icon backgrounds */
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:@lineheight * 2;
+    text-indent:-1999px;
+    overflow: hidden; 
 }
 
 nav {
@@ -45,80 +54,44 @@ nav {
     height:100%;
     border-left:1px solid rgba(0,0,0,0.1);
 
-    .sf-menu {
+    .sf-menu, .auth_navbar {
         li {
+            color:#fff;
+            .inset-text;
+            .blockletter-small;
             background-color:transparent;
             height:@lineheight2;
             line-height:@lineheight2;
-            .blockletter;
+            float: right;
+            overflow: hidden;
+            border-left:1px solid rgba(270,270,270,0.1);
+            border-right:1px solid rgba(0,0,0,0.1);
 
-            a, a:link, a:visited {
-                color:#fff;
-                .inset-text;
-                border-left:1px solid rgba(270,270,270,0.3);
-                border-right:1px solid rgba(0,0,0,0.1);
+            a {
+                color: #fff;
                 padding:0 @typeheight;
-            }
-            a:hover, a:active, a:focus {
-                .linear-gradient(rgba(270,270,270,0.1), rgba(270,270,270,0));
+                height:@lineheight2;
+                line-height:@lineheight2;
             }
         }
+
         li:hover, li.sfHover {
             background-color:transparent;
+            .linear-gradient(rgba(270,270,270,0.1), rgba(270,270,270,0));
 
             li {
                 line-height: @lineheight2;
                 height: @lineheight2;
                 background-color:@grey3;
-                .blockletter;
+                
                 a:hover {
                     color:@sky;
                 }
             }
         }
 
-        li:last-child {
-            a {
-                border-right:none;
-                padding-l:@lineheight2;
-            }
-
-            li {
-                .blockletter;
-            }
-        }
     }
 
-}
-
-.auth_navbar {
-    .inset-text;
-    .blockletter;
-    color:#fff;
-    height:@lineheight2;
-    line-height:@lineheight2;
-    display:block;
-
-    a, a:link, a:visited {
-        .inset-text;
-        height:@lineheight2;
-        line-height:@lineheight2;
-        color:#fff;
-        border-left:1px solid rgba(270,270,270,0.3);
-        border-right:1px solid rgba(0,0,0,0.1);
-        padding:0 @typeheight;
-        display:block;
-        float:right;
-    }
-    a:hover, a:active, a:focus {
-        .linear-gradient(rgba(270,270,270,0.1), rgba(270,270,270,0));
-    }
-    a:last-child {
-        margin-left: @typeheight;
-    }
-    a:first-child {
-        border-right:none;
-    }
 }
 
 #page {
@@ -207,8 +180,7 @@ nav {
 
         h2 {
             
-            .blockletter();
-            
+                        
             font-weight: normal;
             color: #aaa;
             cursor:pointer;
@@ -333,9 +305,6 @@ nav {
             height:@lineheight2;
             lineheight:@lineheight2;
         }
-        select[multiple=multiple]{
-            height:@lineheight * 5;
-        }
         select {
             width:300px;
             max-width:300px;
@@ -351,6 +320,7 @@ nav {
 footer {
     background-color:transparent;
     color:@dusky-blue1;
+    .blockletter-small;
     
     .copyright {
         font-size: @typeheight * .8;
@@ -362,3 +332,63 @@ footer {
     
 }
 
+.flash {
+	width:280px;
+    left:50%;
+    margin-left:-140px;
+}
+
+/* ================= iPad in portrait ================= */
+@media all and (orientation:portrait){
+}
+
+/* ================= iPad in landscape ================= */
+@media all and (orientation:landscape){
+}
+
+/* ================= iPhone4 (retina screen) ================= */
+@media only screen
+and (-webkit-min-device-pixel-ratio: 2)
+and (max-device-width: 480px){
+}
+
+/* ================= Intermediate browser viewing area (480px+)================= */
+@media all and (max-width: 480px){
+
+    #left_sidebar, #right_sidebar {
+        padding:0;
+        width:20px;
+        overflow: hidden;
+    }
+
+    #left_sidebar:hover, #right_sidebar:hover {
+        padding:@lineheight3;
+        width:30%;
+    }
+
+    .max-480 {
+        display: static;
+    }
+    .min-480 {
+        display: none;
+    }
+
+}
+
+/* ================= Wide browser viewing area (768px +) ==================== */
+@media only screen
+and (max-width: 768px) {
+
+
+
+}
+
+/* ================= Max browser viewing area (1140px +) ==================== */
+@media only screen and (min-width: 1140px) {
+
+}
+
+/* ============================================================================= Print styles. Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/ ========================================================================== */
+@media print {
+
+}

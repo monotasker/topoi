@@ -5,6 +5,7 @@
 #########################################################################
 
 response.title = request.application
+response.mobiletitle = request.application
 response.subtitle = T('A tool for managing primary-text research in the humanities')
 
 #http://dev.w3.org/html5/markup/meta.name.html
