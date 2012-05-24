@@ -262,7 +262,7 @@ class AjaxSelect(object):
         '''create hidden div to hold form (to be displayed via modal dialog,
         dialog triggered in static/plugin_ajaxselect.js'''
 
-        dialog = ''#DIV('', _id = form_name, _class='ajaxselect_dialog')
+        dialog = ''#TODO: I don't think this is needed anymore DIV('', _id = form_name, _class='ajaxselect_dialog')
 
         return dialog
 

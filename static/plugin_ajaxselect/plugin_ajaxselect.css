@@ -29,9 +29,10 @@ ul.taglist {
 
 li.tag {
     font-size:.8em;
-    float: right;
+    float: left;
     margin-left:0;
     margin-right:.5em;
+    margin-bottom:.5em;
 }
 
 span.tag, a.tag {
@@ -42,9 +43,7 @@ span.tag, a.tag {
     background-color: #7C81A4;
     border:1px solid #626891;
     padding:0 1em 0 .5em;
-    border-radius:0 1em 1em 0;
     line-height:2em;
-    text-transform:uppercase;
     font-family:Ubuntu, Arial, Helvetica, sans-serif;
     text-decoration:none;
     -moz-transition:all 100ms ease-in;
