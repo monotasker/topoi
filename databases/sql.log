@@ -156,3 +156,9 @@ CREATE TABLE plugin_comments_comment(
 success!
 timestamp: 2012-05-17T16:01:06.461344
 ALTER TABLE notes ADD ref_formatted CHAR(512);
+timestamp: 2012-05-24T15:34:57.548562
+ALTER TABLE plugin_comments_comment ADD username CHAR(512);
+timestamp: 2012-05-24T15:34:57.751088
+ALTER TABLE plugin_comments_comment ADD details INTEGER;
+timestamp: 2012-05-24T15:34:57.909895
+ALTER TABLE plugin_comments_comment ADD email_address CHAR(512);
