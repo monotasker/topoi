@@ -1,5 +1,11 @@
 # coding: utf8
-import ast, pprint
+import ast
+if 0:
+    from gluon import current, URL, SQLFORM, A
+    response = current.response
+    request = current.request
+    db = current.db
+    session = current.session
 
 def listing():
     """
@@ -47,7 +53,8 @@ def listing():
         tb = db[tablename]
         #select all rows in the table
 
-        #filter that set based on any provided field-value pairs in request.vars.restrictor
+        #filter that set based on any provided field-value pairs in
+        #request.vars.restrictor
         if restrictor:
             for k, v in restrictor.items():
                 filter_select = db(tb[k] == v)._select(tb.id)
@@ -59,7 +66,8 @@ def listing():
     listset = []
     for r in rowlist:
         fieldname = db[tablename].fields[1]
-        # use format string from db table definition to list entries (if available)
+        # use format string from db table definition to list entries (if
+        #available)
         if db[tablename]._format:
             try:
                 listformat = db[tablename]._format % r
@@ -68,13 +76,20 @@ def listing():
         else:
             listformat = r[fieldname]
 
-        i = A(listformat, _href=URL('plugin_listandedit', 'edit.load', args=[tablename, r.id]), _class='plugin_listandedit_list', cid='viewpane')
+        i = A(listformat, _href=URL('plugin_listandedit', 'edit.load',
+                                        args=[tablename, r.id]),
+                                        _class='plugin_listandedit_list',
+                                        cid='viewpane')
         listset.append(i)
 
     # create a link for adding a new row to the table
-    adder = A('Add new', _href=URL('plugin_listandedit', 'edit.load', args=[tablename]), _class='plugin_listandedit_list', cid='viewpane')
+    adder = A('Add new', _href=URL('plugin_listandedit', 'edit.load',
+                                        args=[tablename]),
+                                        _class='plugin_listandedit_list',
+                                        cid='viewpane')
 
-    return dict(listset = listset, adder = adder, rname = rname)
+    return dict(listset=listset, adder=adder, rname=rname)
+
 
 def makeurl(tablename):
     if session.restrictor:
@@ -84,43 +99,82 @@ def makeurl(tablename):
         rstring += '}'
     else:
         rstring = ''
-    the_url = URL('plugin_listandedit', 'listing.load', args=tablename, vars=rstring)
+    the_url = URL('plugin_listandedit', 'listing.load',
+                    args=tablename, vars=rstring)
     return the_url
+
+
+def dupAndEdit():
+    """Duplicate a db row and open the new copy for editing."""
+    print 'starting plugin_listandedit.dupAndEdit ******************'
+    tablename = request.args[0]
+    rowid = request.args[1]
+    formname = '%s/%s/dup' % (tablename, rowid)
+
+    src = db(db[tablename].id == rowid).select().first()
+    print src
+    form = SQLFORM(db[tablename], separator='', showid=True, formstyle='ul')
+
+    for v in db[tablename].fields:
+        if v != 'id' and v in src:
+            form.vars[v] = src[v]
+
+    if form.process(formname=formname).accepted:
+        the_url = makeurl(tablename)
+        response.js = "web2py_component('%s', 'listpane');" % the_url
+        response.flash = 'New record successfully created.'
+    elif form.errors:
+        print form.vars
+        response.flash = 'Sorry, there was an error processing '\
+                         'the form. The new record has not been created.'
+    else:
+        pass
+
+    return dict(form=form)
+
 
 def edit():
     print '\n starting controllers/plugin_listandedit edit()'
     tablename = request.args[0]
+    duplink = ''
     if len(request.args) > 1:
         rowid = request.args[1]
         formname = '%s/%s' % (tablename, rowid)
         print 'formname: ', formname
 
         #TODO: Set value of "project" field programatically
-        #TODO: re-load listing component on form submit
-        form = SQLFORM(db[tablename], rowid, separator='', showid=False)
-        pprint.pprint(form.vars)
+        form = SQLFORM(db[tablename], rowid, separator='',
+                deletable=True,
+                showid=True,
+                formstyle='ul')
         if form.process(formname=formname).accepted:
             the_url = makeurl(tablename)
-            response.js = "web2py_component('%s', 'listpane');" %  the_url
+            response.js = "web2py_component('%s', 'listpane');" % the_url
             response.flash = 'The changes were recorded successfully.'
-            print form.vars
         elif form.errors:
-            print form.vars
-            print hi
+            print form.errors
             response.flash = 'Sorry, there was an error processing ' \
                              'the form. The changes have not been recorded.'
+
         else:
             #TODO: Why is this line being run when a record is first selected?
             print form.vars
             pass
 
+        # create a link for adding a new row to the table
+        duplink = A('Make a copy of this record', _href=URL('plugin_listandedit',
+            'dupAndEdit.load', args=[tablename, rowid]),
+            _class='plugin_listandedit_list', cid='viewpane')
+
     elif len(request.args) == 1:
         formname = '%s/create' % (tablename)
 
-        form = SQLFORM(db[tablename], separator='', showid=False)
+        form = SQLFORM(db[tablename], separator='',
+                        showid=True,
+                        formstyle='ul')
         if form.process(formname=formname).accepted:
             the_url = makeurl(tablename)
-            response.js = "web2py_component('%s', 'listpane');" %  the_url
+            response.js = "web2py_component('%s', 'listpane');" % the_url
             response.flash = 'New record successfully created.'
         elif form.errors:
             print form.vars
@@ -130,6 +184,7 @@ def edit():
             pass
 
     else:
-        response.flash = 'Sorry, you need to specify a type of record before I can listing the records.'
+        response.flash = 'Sorry, you need to specify a type of record before' \
+                'I can list the records.'
 
-    return dict(form = form)
+    return dict(form=form, duplink=duplink)
