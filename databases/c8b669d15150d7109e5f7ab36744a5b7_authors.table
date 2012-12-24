@@ -1,48 +1,48 @@
 (dp1
-S'lived'
+S'id'
 p2
 (dp3
 S'type'
 p4
-S'string'
+S'id'
 p5
 sS'sortable'
 p6
-I4
+I1
 sS'sql'
 p7
-S'CHAR(512)'
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
 p8
-ssS'id'
+ssS'lived'
 p9
 (dp10
 g4
-S'id'
+S'string'
 p11
 sg6
-I1
+I4
 sg7
-S'INTEGER PRIMARY KEY AUTOINCREMENT'
+S'CHAR(512)'
 p12
-ssS'name'
+ssS'location'
 p13
 (dp14
 g4
-g5
+S'reference locations'
+p15
+sg6
+I3
+sg7
+S'INTEGER REFERENCES locations (id) ON DELETE CASCADE'
+p16
+ssS'name'
+p17
+(dp18
+g4
+g11
 sg6
 I2
 sg7
 S'CHAR(512)'
-p15
-ssS'location'
-p16
-(dp17
-g4
-S'reference locations'
-p18
-sg6
-I3
-sg7
-S'INTEGER REFERENCES locations(id) ON DELETE CASCADE'
 p19
 ss.
