@@ -1,0 +1,63 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+GetInHMS	appadmin.py	/^    def GetInHMS(seconds):$/;"	f	function:ccache
+add	plugin_selectoradd.py	/^def add():$/;"	f
+args	appadmin.py	/^                 args=[request.application])], [T('db'), False,$/;"	v
+articles	plugin_blog.py	/^def articles():$/;"	f
+ccache	appadmin.py	/^def ccache():$/;"	f
+checkfilter	plugin_comments.py	/^def checkfilter(form):$/;"	f
+crud	plugin_blog.py	/^    crud = Crud()$/;"	v
+crud	plugin_comments.py	/^    crud = Crud(db)$/;"	v
+csv	appadmin.py	/^def csv():$/;"	f
+databases	appadmin.py	/^databases = get_databases(None)$/;"	v
+db	plugin_ajaxselect.py	/^    db = dal.DAL()$/;"	v
+db	plugin_blog.py	/^    db = DAL()$/;"	v
+db	plugin_listandedit.py	/^    db = current.db$/;"	v
+db	plugin_multiselect_widget.py	/^db = DAL('sqlite:memory:')$/;"	v
+download	appadmin.py	/^def download():$/;"	f
+dupAndEdit	plugin_listandedit.py	/^def dupAndEdit():$/;"	f
+edit	plugin_listandedit.py	/^def edit():$/;"	f
+edit_post	plugin_blog.py	/^def edit_post():$/;"	f
+eval_in_global_env	appadmin.py	/^def eval_in_global_env(text):$/;"	f
+front	plugin_blog.py	/^def front():$/;"	f
+get_database	appadmin.py	/^def get_database(request):$/;"	f
+get_databases	appadmin.py	/^def get_databases(request):$/;"	f
+get_query	appadmin.py	/^def get_query(request):$/;"	f
+get_table	appadmin.py	/^def get_table(request):$/;"	f
+global_env	appadmin.py	/^global_env = copy.copy(globals())$/;"	v
+hosts	appadmin.py	/^    hosts = (http_host, )$/;"	v
+hosts	appadmin.py	/^    hosts = (http_host, socket.gethostname(),$/;"	v
+http_host	appadmin.py	/^http_host = request.env.http_host.split(':')[0]$/;"	v
+ignore_rw	appadmin.py	/^ignore_rw = True$/;"	v
+import_csv	appadmin.py	/^def import_csv(table, file):$/;"	f
+index	appadmin.py	/^def index():$/;"	f
+index	default.py	/^def index():$/;"	f
+index	plugin_multiselect_widget.py	/^def index():$/;"	f
+insert	appadmin.py	/^def insert():$/;"	f
+linked_create_form	plugin_ajaxselect.py	/^def linked_create_form():$/;"	f
+linked_edit_form	plugin_ajaxselect.py	/^def linked_edit_form():$/;"	f
+listing	plugin_listandedit.py	/^def listing():$/;"	f
+makeurl	plugin_listandedit.py	/^def makeurl(tablename):$/;"	f
+multiple	plugin_multiselect_widget.py	/^                                                  multiple=True))),$/;"	v
+new_post	plugin_blog.py	/^def new_post():$/;"	f
+new_tag	plugin_blog.py	/^def new_tag():$/;"	f
+notes	default.py	/^def notes():$/;"	f
+post	plugin_comments.py	/^def post():$/;"	f
+query_by_table_type	appadmin.py	/^def query_by_table_type(tablename,db,request=request):$/;"	f
+remote_addr	appadmin.py	/^remote_addr = request.env.remote_addr$/;"	v
+request	plugin_listandedit.py	/^    request = current.request$/;"	v
+requires	plugin_multiselect_widget.py	/^          requires = IS_EMPTY_OR(IS_IN_SET(['circle', 'square', 'triangle'],$/;"	v
+requires	plugin_multiselect_widget.py	/^          requires = IS_EMPTY_OR(IS_IN_SET([(1, 'red'), (2, 'blue'), (3, 'green')],$/;"	v
+response	plugin_listandedit.py	/^    response = current.response$/;"	v
+select	appadmin.py	/^def select():$/;"	f
+session	plugin_listandedit.py	/^    session = current.session$/;"	v
+set_form_wrapper	plugin_ajaxselect.py	/^def set_form_wrapper():$/;"	f
+set_widget	plugin_ajaxselect.py	/^def set_widget():$/;"	f
+setval	plugin_ajaxselect.py	/^def setval():$/;"	f
+state	appadmin.py	/^def state():$/;"	f
+update	appadmin.py	/^def update():$/;"	f
+user	default.py	/^def user():$/;"	f

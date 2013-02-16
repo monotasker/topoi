@@ -1,0 +1,37 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+auth	db.py	/^auth = Auth(db)                                # authentication\/authorization$/;"	v
+authbar	plugin_framework.py	/^def authbar():$/;"	f
+crud	db.py	/^crud = Crud(db)                                # for CRUD helpers using auth$/;"	v
+db	db.py	/^    db = DAL('google:datastore')              # connect to Google BigTable$/;"	v
+db	db.py	/^    db = DAL('sqlite:\/\/storage.sqlite')       # if not, use SQLite or other DB$/;"	v
+format	plugin_blog.py	/^    format='%(tagname)s')$/;"	v
+format	plugin_blog.py	/^    format='%(title)s')$/;"	v
+format	topoi.py	/^    format='%(location)s')$/;"	v
+format	topoi.py	/^    format='%(name)s')$/;"	v
+format	topoi.py	/^    format='%(projectname)s')$/;"	v
+format	topoi.py	/^    format='%(tagname)s')$/;"	v
+format	topoi.py	/^    format='%(title)s')$/;"	v
+format	topoi.py	/^    format=lambda row: '{}, {}, {}'.format(row.author.name,$/;"	v
+lister	topoi.py	/^                                                        lister='editlinks')$/;"	v
+lister	topoi.py	/^                                                lister='editlinks')$/;"	v
+mail	db.py	/^mail = Mail()                                  # mailer$/;"	v
+multi	topoi.py	/^                                                        multi='basic',$/;"	v
+multi	topoi.py	/^                                                multi='basic',$/;"	v
+multiple	topoi.py	/^                                                        multiple=True)$/;"	v
+multiple	topoi.py	/^                                        multiple=False)$/;"	v
+multiple	topoi.py	/^                                    multiple=True)$/;"	v
+plugin_comments	plugin_comments.py	/^def plugin_comments():$/;"	f
+plugins	db.py	/^plugins = PluginManager()                      # for configuring plugins$/;"	v
+refresher	topoi.py	/^                                                        refresher=True,$/;"	v
+refresher	topoi.py	/^                                                refresher=True)$/;"	v
+refresher	topoi.py	/^                                                refresher=True,$/;"	v
+restricted	topoi.py	/^                                                restricted='author')$/;"	v
+restrictor	topoi.py	/^                                                restrictor='work')$/;"	v
+service	db.py	/^service = Service()                            # for json, xml, jsonrpc, xmlrpc, amfrpc$/;"	v
+spacer	topoi.py	/^spacer = ', '$/;"	v
+writable	topoi.py	/^            writable=False),$/;"	v
