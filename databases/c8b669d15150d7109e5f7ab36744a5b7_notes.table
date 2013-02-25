@@ -47,7 +47,7 @@ p22
 sg6
 I3
 sg7
-S'INTEGER REFERENCES authors(id) ON DELETE CASCADE'
+S'INTEGER REFERENCES authors (id) ON DELETE CASCADE'
 p23
 ssS'work'
 p24
@@ -58,7 +58,7 @@ p26
 sg6
 I4
 sg7
-S'INTEGER REFERENCES works(id) ON DELETE CASCADE'
+S'INTEGER REFERENCES works (id) ON DELETE CASCADE'
 p27
 ssS'excerpt'
 p28
@@ -93,7 +93,7 @@ p40
 sg6
 I11
 sg7
-S'INTEGER REFERENCES projects(id) ON DELETE CASCADE'
+S'INTEGER REFERENCES projects (id) ON DELETE CASCADE'
 p41
 ssS'created'
 p42
@@ -115,7 +115,7 @@ p48
 sg6
 I2
 sg7
-S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
 p49
 ssS'last_edited'
 p50

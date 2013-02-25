@@ -13,13 +13,35 @@ db.define_table('locations',
     Field('location', 'string'),
     format='%(location)s')
 
+
+db.define_table('genres',
+    Field('name', 'string'),
+    format='%(name)s')
+
+
 db.define_table('authors',
     Field('name', 'string', default='anonymous'),
-    Field('location', db.locations),
+    Field('location', 'list:reference db.locations'),
     Field('lived', 'string'),
+    Field('genres', 'list:reference db.genres'),
+    Field('notes', 'text'),
     format='%(name)s')
+
+db.authors.location.requires = IS_IN_DB(db, 'locations.id', db.locations._format,
+                                                        multiple=True)
 db.authors.location.widget = lambda field, value: AjaxSelect().widget(
-                                                        field, value)
+                                                        field, value,
+                                                        multi='basic',
+                                                        refresher=True,
+                                                        lister='editlinks')
+db.authors.genres.requires = IS_IN_DB(db, 'genres.id', db.genres._format,
+                                                        multiple=True)
+db.authors.genres.widget = lambda field, value: AjaxSelect().widget(
+                                                        field, value,
+                                                        multi='basic',
+                                                        refresher=True,
+                                                        lister='editlinks')
+
 
 db.define_table('works',
     Field('title', 'string'),
@@ -27,10 +49,15 @@ db.define_table('works',
     Field('date_earliest'),
     Field('date_latest'),
     Field('date_likely'),
-    Field('genre'),
+    Field('genre', 'list:reference db.genres'),
     Field('source'),
     Field('comments'),
     format='%(title)s')
+db.works.genre.requires = IS_IN_DB(db, 'genres.id', db.genres._format)
+db.works.genre.widget = lambda field, value: AjaxSelect().widget(
+                                                field, value,
+                                                refresher=True)
+
 
 db.define_table('projects',
     Field('projectname', 'string'),
@@ -57,17 +84,22 @@ db.define_table('notes',
     Field('created', 'datetime', default=datetime.datetime.utcnow(),
             writable=False),
     Field('project', db.projects),
-    format=lambda row: '%s, %s, %s' % (row.author.name, row.work.title, row.reference))
+    format=lambda row: '{}, {}, {}'.format(row.author.name,
+                                            row.work.title,
+                                            row.reference))
+
+db.notes.author.requires = IS_IN_DB(db, 'authors.id', db.works._format)
 db.notes.author.widget = lambda field, value: AjaxSelect().widget(
                                                 field, value,
                                                 refresher=True,
                                                 restrictor='work')
+db.notes.work.requires = IS_IN_DB(db, 'works.id', db.works._format)
 db.notes.work.widget = lambda field, value: FilteredAjaxSelect().widget(
                                                 field, value,
                                                 refresher=True,
                                                 restricted='author')
 db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format,
-                                    multiple = True)
+                                    multiple=True)
 db.notes.tags.widget = lambda field, value: AjaxSelect().widget(
                                                 field, value,
                                                 multi='basic',

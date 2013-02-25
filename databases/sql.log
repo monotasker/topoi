@@ -162,3 +162,13 @@ timestamp: 2012-05-24T15:34:57.751088
 ALTER TABLE plugin_comments_comment ADD details INTEGER;
 timestamp: 2012-05-24T15:34:57.909895
 ALTER TABLE plugin_comments_comment ADD email_address CHAR(512);
+timestamp: 2012-12-24T11:00:42.071724
+CREATE TABLE genres(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512)
+);
+success!
+timestamp: 2012-12-24T11:00:42.258298
+ALTER TABLE authors ADD genres INTEGER REFERENCES genres (id) ON DELETE CASCADE;
+timestamp: 2012-12-24T11:00:42.387055
+ALTER TABLE authors ADD notes CHAR(512);

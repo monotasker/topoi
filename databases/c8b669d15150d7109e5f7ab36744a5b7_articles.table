@@ -22,7 +22,7 @@ p11
 sg6
 I2
 sg7
-S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
 p12
 ssS'title'
 p13
@@ -65,7 +65,7 @@ p26
 sg6
 I8
 sg7
-S'INTEGER REFERENCES blog_tags(id) ON DELETE CASCADE'
+S'INTEGER REFERENCES blog_tags (id) ON DELETE CASCADE'
 p27
 ssS'pullquote'
 p28

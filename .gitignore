@@ -4,5 +4,4 @@
 *.bak
 errors/*
 sessions/*
-*.swp
-*.pyc
+
