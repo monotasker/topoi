@@ -2,3 +2,13 @@
 for v in range(vals):
     =response._vars.values()[v]
 pass}}
+
+<script>
+        $('ul.sortable').sortable({
+            placeholder: 'ui-state-highlight',
+            stop: function(event, ui){ 
+                var $taglist = $(event.target).find('li');
+            } 
+        });
+        $('ul.sortable').disableSelection();
+</script>
