@@ -10,11 +10,10 @@ def index():
     projectlist = []
     for p in projects:
         i = TR(TD(A(p.projectname,
-                        _href=URL('plugin_listandedit',
+                        _href=URL('editing',
                                     'listing',
-                                    args=['notes', p.id],
-                                    vars={'fields': ['author', 'work',
-                                                        'reference']}
+                                    args=['notes'],
+                                    vars={'restrictor': {'project': p.id}}
                                   )
                 )))
         projectlist.append(i)

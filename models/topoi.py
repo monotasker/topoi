@@ -6,6 +6,8 @@ from gluon import current
 current.db = db
 response.files.append(URL('static', 'plugin_ajaxselect/plugin_ajaxselect.css'))
 response.files.append(URL('static', 'plugin_ajaxselect/plugin_ajaxselect.js'))
+response.files.append(URL('static', 'plugin_listandedit/plugin_listandedit.css'))
+
 
 spacer = ', '
 
@@ -13,11 +15,9 @@ db.define_table('locations',
     Field('location', 'string'),
     format='%(location)s')
 
-
 db.define_table('genres',
     Field('name', 'string'),
     format='%(name)s')
-
 
 db.define_table('authors',
     Field('name', 'string', default='anonymous'),
@@ -42,7 +42,6 @@ db.authors.genres.widget = lambda field, value: AjaxSelect().widget(
                                                         refresher=True,
                                                         lister='editlinks')
 
-
 db.define_table('works',
     Field('title', 'string'),
     Field('author', db.authors),
@@ -57,7 +56,6 @@ db.works.genre.requires = IS_IN_DB(db, 'genres.id', db.genres._format)
 db.works.genre.widget = lambda field, value: AjaxSelect().widget(
                                                 field, value,
                                                 refresher=True)
-
 
 db.define_table('projects',
     Field('projectname', 'string'),
@@ -84,26 +82,32 @@ db.define_table('notes',
     Field('created', 'datetime', default=datetime.datetime.utcnow(),
             writable=False),
     Field('project', db.projects),
-    format=lambda row: '{}, {}, {}'.format(row.author.name,
-                                            row.work.title,
+    format=lambda row: '{}, {}, {}'.format(row.author,
+                                            row.work,
                                             row.reference))
 
 db.notes.author.requires = IS_IN_DB(db, 'authors.id', db.works._format)
-db.notes.author.widget = lambda field, value: AjaxSelect().widget(
-                                                field, value,
-                                                refresher=True,
-                                                restrictor='work')
+db.notes.author.widget = lambda field, value: AjaxSelect(
+                                               field, value,
+                                               refresher=True,
+                                               multi='basic',
+                                               lister='simple',
+                                               orderby='name').widget()
+
 db.notes.work.requires = IS_IN_DB(db, 'works.id', db.works._format)
-db.notes.work.widget = lambda field, value: FilteredAjaxSelect().widget(
+db.notes.work.widget = lambda field, value: AjaxSelect(
                                                 field, value,
                                                 refresher=True,
-                                                restricted='author')
+                                                lister='simple',
+                                                multi='basic',
+                                                orderby='title').widget()
 db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format,
                                     multiple=True)
-db.notes.tags.widget = lambda field, value: AjaxSelect().widget(
+db.notes.tags.widget = lambda field, value: AjaxSelect(
                                                 field, value,
                                                 multi='basic',
                                                 refresher=True,
-                                                lister='editlinks')
+                                                lister='editlinks',
+                                                orderby='tagname').widget()
 db.notes.project.requires = IS_IN_DB(db, 'projects.id', db.projects._format,
                                         multiple=False)
