@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+
+{{if request.vars:
+    vars = request.vars
+else:
+    vars = None
+pass}}
+
+<div id="plugin_listandedit_wrapper">
+{{=LOAD('plugin_listandedit', 'widget.load', args=request.args, vars=vars, ajax=False, ajax_trap=True)}}
+</div>
