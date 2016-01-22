@@ -20,31 +20,31 @@ db.define_table('genres',
     format='%(name)s')
 
 db.define_table('authors',
-    Field('name', 'string', default='anonymous'),
+    Field('name', 'string'),
+    Field('short_name', 'string'),
     Field('location', 'list:reference db.locations'),
     Field('lived', 'string'),
     Field('genres', 'list:reference db.genres'),
     Field('notes', 'text'),
     format='%(name)s')
 
-db.authors.location.requires = IS_IN_DB(db, 'locations.id', db.locations._format,
-                                                        multiple=True)
-db.authors.location.widget = lambda field, value: AjaxSelect().widget(
-                                                        field, value,
+db.authors.location.requires = IS_EMPTY_OR(IS_IN_DB(db, 'locations.id', db.locations._format,
+                                                        multiple=True))
+db.authors.location.widget = lambda field, value: AjaxSelect(field, value,
                                                         multi='basic',
                                                         refresher=True,
-                                                        lister='editlinks')
-db.authors.genres.requires = IS_IN_DB(db, 'genres.id', db.genres._format,
-                                                        multiple=True)
-db.authors.genres.widget = lambda field, value: AjaxSelect().widget(
-                                                        field, value,
+                                                        lister='simple').widget()
+db.authors.genres.requires = IS_EMPTY_OR(IS_IN_DB(db, 'genres.id', db.genres._format,
+                                                        multiple=True))
+db.authors.genres.widget = lambda field, value: AjaxSelect(field, value,
                                                         multi='basic',
                                                         refresher=True,
-                                                        lister='editlinks')
+                                                        lister='simple').widget()
 
 db.define_table('works',
     Field('title', 'string'),
-    Field('author', db.authors),
+    Field('short_title', 'string'),
+    Field('author', 'reference authors'),
     Field('date_earliest'),
     Field('date_latest'),
     Field('date_likely'),
@@ -52,10 +52,11 @@ db.define_table('works',
     Field('source'),
     Field('comments'),
     format='%(title)s')
-db.works.genre.requires = IS_IN_DB(db, 'genres.id', db.genres._format)
-db.works.genre.widget = lambda field, value: AjaxSelect().widget(
-                                                field, value,
-                                                refresher=True)
+db.works.genre.requires = IS_EMPTY_OR(IS_IN_DB(db, 'genres.id', db.genres._format))
+db.works.genre.widget = lambda field, value: AjaxSelect(field, value,
+                                                        refresher=True,
+                                                        multi='basic',
+                                                        lister='simple').widget()
 
 db.define_table('projects',
     Field('projectname', 'string'),
@@ -70,9 +71,9 @@ db.define_table('tags',
     format='%(tagname)s')
 
 db.define_table('notes',
-    Field('user', db.auth_user, default=auth.user_id),
-    Field('author', db.authors),
-    Field('work', db.works),
+    Field('user', 'reference auth_user', default=auth.user_id),
+    Field('author', 'reference authors'),
+    Field('work', 'reference works'),
     Field('reference'),
     Field('excerpt', 'text'),
     Field('body', 'text'),
@@ -81,33 +82,31 @@ db.define_table('notes',
             writable=False),
     Field('created', 'datetime', default=datetime.datetime.utcnow(),
             writable=False),
-    Field('project', db.projects),
-    format=lambda row: '{}, {}, {}'.format(row.author,
-                                            row.work,
-                                            row.reference))
+    Field('project', 'reference projects'),
+    format=lambda row: '{}, {}, {}'.format(db.authors[row.author].short_name,
+                                           db.works[row.work].short_title,
+                                           row.reference))
 
-db.notes.author.requires = IS_IN_DB(db, 'authors.id', db.works._format)
 db.notes.author.widget = lambda field, value: AjaxSelect(
                                                field, value,
                                                refresher=True,
-                                               multi='basic',
-                                               lister='simple',
+                                               multi=False,
+                                               restrictor='work',
+                                               lister=None,
                                                orderby='name').widget()
 
-db.notes.work.requires = IS_IN_DB(db, 'works.id', db.works._format)
-db.notes.work.widget = lambda field, value: AjaxSelect(
+db.notes.work.widget = lambda field, value: FilteredAjaxSelect(
                                                 field, value,
                                                 refresher=True,
-                                                lister='simple',
-                                                multi='basic',
+                                                lister=None,
+                                                multi=False,
+                                                restricted='author',
                                                 orderby='title').widget()
-db.notes.tags.requires = IS_IN_DB(db, 'tags.id', db.tags._format,
-                                    multiple=True)
+db.notes.tags.requires = IS_EMPTY_OR(IS_IN_DB(db, 'tags.id', db.tags._format,
+                                    multiple=True))
 db.notes.tags.widget = lambda field, value: AjaxSelect(
                                                 field, value,
                                                 multi='basic',
                                                 refresher=True,
                                                 lister='editlinks',
                                                 orderby='tagname').widget()
-db.notes.project.requires = IS_IN_DB(db, 'projects.id', db.projects._format,
-                                        multiple=False)

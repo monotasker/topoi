@@ -37,11 +37,10 @@ p14
 sg9
 I00
 sg10
-S'id'
-p15
+g12
 ssS'tagname'
-p16
-(dp17
+p15
+(dp16
 g4
 I512
 sg5
@@ -50,15 +49,15 @@ sg6
 I2
 sg7
 S'CHAR(512)'
-p18
+p17
 sg9
 I00
 sg10
 S'string'
-p19
+p18
 ssS'creator'
-p20
-(dp21
+p19
+(dp20
 g4
 I512
 sg5
@@ -67,10 +66,10 @@ sg6
 I3
 sg7
 S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  '
-p22
+p21
 sg9
 I00
 sg10
 S'reference auth_user'
-p23
+p22
 ss.

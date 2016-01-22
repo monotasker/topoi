@@ -37,11 +37,10 @@ p14
 sg9
 I00
 sg10
-S'id'
-p15
+g12
 ssS'description'
-p16
-(dp17
+p15
+(dp16
 g4
 I32768
 sg5
@@ -50,10 +49,10 @@ sg6
 I3
 sg7
 S'TEXT'
-p18
+p17
 sg9
 I00
 sg10
 S'text'
-p19
+p18
 ss.
