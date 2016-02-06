@@ -51,12 +51,17 @@ db.define_table('works',
     Field('genre', 'list:reference db.genres'),
     Field('source'),
     Field('comments'),
-    format='%(title)s')
+    format=lambda row: '{}, {}'.format(db.authors[row.author].short_name,
+                                           row.title))
 db.works.genre.requires = IS_EMPTY_OR(IS_IN_DB(db, 'genres.id', db.genres._format))
 db.works.genre.widget = lambda field, value: AjaxSelect(field, value,
                                                         refresher=True,
                                                         multi='basic',
                                                         lister='simple').widget()
+db.works.author.widget = lambda field, value: AjaxSelect(field, value,
+                                                        multi=False,
+                                                        refresher=True,
+                                                        lister=None).widget()
 
 db.define_table('projects',
     Field('projectname', 'string'),
@@ -108,5 +113,5 @@ db.notes.tags.widget = lambda field, value: AjaxSelect(
                                                 field, value,
                                                 multi='basic',
                                                 refresher=True,
-                                                lister='editlinks',
+                                                lister='simple',
                                                 orderby='tagname').widget()
