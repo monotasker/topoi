@@ -1,13 +1,9 @@
 # coding: utf8
-from plugin_ajaxselect import AjaxSelect, FilteredAjaxSelect
+from plugin_ajaxselect import AjaxSelect
 import datetime
 import string
 from gluon import current
 current.db = db
-response.files.append(URL('static', 'plugin_ajaxselect/plugin_ajaxselect.css'))
-response.files.append(URL('static', 'plugin_ajaxselect/plugin_ajaxselect.js'))
-response.files.append(URL('static', 'plugin_listandedit/plugin_listandedit.css'))
-
 
 spacer = ', '
 
@@ -100,7 +96,7 @@ db.notes.author.widget = lambda field, value: AjaxSelect(
                                                lister=None,
                                                orderby='name').widget()
 
-db.notes.work.widget = lambda field, value: FilteredAjaxSelect(
+db.notes.work.widget = lambda field, value: AjaxSelect(
                                                 field, value,
                                                 refresher=True,
                                                 lister=None,
