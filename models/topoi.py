@@ -35,7 +35,8 @@ db.authors.genres.requires = IS_EMPTY_OR(IS_IN_DB(db, 'genres.id', db.genres._fo
 db.authors.genres.widget = lambda field, value: AjaxSelect(field, value,
                                                         multi='basic',
                                                         refresher=True,
-                                                        lister='simple').widget()
+                                                        lister='simple',
+                                                        sortable=True).widget()
 
 db.define_table('works',
     Field('title', 'string'),
