@@ -52,20 +52,42 @@
           <div class="w2p_fw">
           {{=tags_select[0]}}
           </div>
+          <div class="w2p_fw">
+          {{=tags_x_select[0]}}
+          </div>
       </div>
     </div>
   </div>
 </div>
 
-<button type='submit'>Find notes</button>
+<input type="checkbox" name="with_comments" value='true' id="with_comments">Only show notes with comments</input>
+<br />
+<input type="checkbox" name="with_excerpt" value='true' id="with_excerpt">Only show notes with an excerpt</input>
+<br />
+<br />
+<button id='form_submit' type='submit'>Find notes</button>
 
 </form>
 
         </div> <!--col-md-4-->
 
-        <div class="col-md-4">
-
+        <div id='list_frame' class="col-md-8">
         </div>
 
     </div> <!--row-->
 </div> <!--container-fluid-->
+
+<style>
+select {width: 100%;}
+table {width: 100%;}
+</style>
+
+<script type="text/javascript">
+
+$(document).on('click', '#form_submit', function(event){
+    ajax('/topoi/reporting/get_notes', ['author', 'work', 'tags', 'with_comments',
+                                        'with_excerpt', 'tags_excluded'], 'list_frame');
+    event.preventDefault();
+});
+
+</script>
