@@ -1,4 +1,5 @@
 
+from collections import defaultdict
 
 def list_by_tags():
     """
@@ -21,12 +22,12 @@ def list_by_tags():
     tags_select = AjaxSelect(db.notes.tags, 0,
                                refresher=True,
                                adder=False,
-                               orderby='author',
+                               orderby='tagname',
                                lister='simple').widget()
     tags_x_select = AjaxSelect(db.notes.tags, 0,
                                refresher=True,
                                adder=False,
-                               orderby='author',
+                               orderby='tagname',
                                lister='simple').widget()
     print tags_x_select[0][0]
     tags_x_select[0][0]['_name'] = 'tags_excluded'
@@ -70,16 +71,29 @@ def get_notes():
     if with_comments and with_comments not in ['false', None]:
         notes.exclude(lambda row: row.body in [None, ''])
 
+    tag_counts = defaultdict(int)
+    for n in notes:
+        for t in n.tags:
+                tag_counts[t] += 1
+
+    tl = ['{}: {}'.format(db.tags(t).tagname, c) for t, c in tag_counts.iteritems()]
+    tl.sort()
+    tl = [LI(t) for t in tl]
+    taglist = UL(*tl, _class='list')
+
     note_table = TABLE()
     note_table['_class'] = 'table'
     for n in notes:
         myrow = TR()
         myrow.append(TD(db.authors(n.author).short_name))
         myrow.append(TD(db.works(n.work).short_title))
+        myrow.append(TD(n.reference))
         myrow.append(TD(n.excerpt))
         myrow.append(TD(n.body))
         note_table.append(myrow)
 
-    note_display = CAT(SPAN(H4('{} notes selected'.format(len(notes)))), note_table)
+    note_display = CAT(SPAN(H4('{} notes selected'.format(len(notes)))),
+                       taglist,
+                       note_table)
 
     return note_display
