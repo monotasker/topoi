@@ -29,12 +29,19 @@ def list_by_tags():
                                adder=False,
                                orderby='tagname',
                                lister='simple').widget()
-    print tags_x_select[0][0]
+
+    tags_and_select = AjaxSelect(db.notes.tags, 0,
+                               refresher=True,
+                               adder=False,
+                               orderby='tagname',
+                               lister='simple').widget()
     tags_x_select[0][0]['_name'] = 'tags_excluded'
+    tags_and_select[0][0]['_name'] = 'tags_intersection'
 
     return {'author_select': author_select,
             'work_select': work_select,
             'tags_select': tags_select,
+            'tags_and_select': tags_and_select,
             'tags_x_select': tags_x_select}
 
 def get_notes():
@@ -45,6 +52,7 @@ def get_notes():
     work = request.vars['work'] if 'work' in request.vars.keys() else None
     tags = request.vars['tags'] if 'tags' in request.vars.keys() else None
     tags_excluded = request.vars['tags_excluded'] if 'tags_excluded' in request.vars.keys() else None
+    tags_intersection = request.vars['tags_intersection'] if 'tags_intersection' in request.vars.keys() else None
     with_excerpt = request.vars['with_excerpt'] if 'with_excerpt' in request.vars.keys() else None
     with_comments = request.vars['with_comments'] if 'with_comments' in request.vars.keys() else None
 
@@ -61,6 +69,12 @@ def get_notes():
         tags = [tags] if isinstance(tags, (int, str)) else tags
         notes = notes.find(lambda row: row.tags and [t for t in row.tags
                                                      if str(t) in tags])
+
+    if tags_intersection and tags_intersection not in ['none', None]:
+        tags_intersection = [tags_intersection] \
+            if isinstance(tags_intersection, (int, str)) else tags_intersection
+        print 'tags_intersection:', tags_intersection
+        notes = notes.find(lambda row: row.tags and all(int(t) in row.tags for t in tags_intersection))
     if tags_excluded and tags_excluded not in ['none', None]:
         tags_excluded = [tags_excluded] \
             if isinstance(tags_excluded, (int, str)) else tags_excluded

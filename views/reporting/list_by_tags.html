@@ -50,9 +50,15 @@
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
           <div class="w2p_fw">
+          Having all of
+          {{=tags_and_select[0]}}
+          </div>
+          <div class="w2p_fw">
+          and any of
           {{=tags_select[0]}}
           </div>
           <div class="w2p_fw">
+          and none of
           {{=tags_x_select[0]}}
           </div>
       </div>
@@ -87,7 +93,7 @@ table {width: 100%;}
 
 $(document).on('click', '#form_submit', function(event){
     ajax('/topoi/reporting/get_notes', ['author', 'work', 'tags', 'with_comments',
-                                        'with_excerpt', 'tags_excluded'], 'list_frame');
+                                        'with_excerpt', 'tags_excluded', 'tags_intersection'], 'list_frame');
     event.preventDefault();
 });
 
